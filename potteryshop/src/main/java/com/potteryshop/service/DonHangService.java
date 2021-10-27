@@ -17,13 +17,13 @@ public interface DonHangService {
 	
 	DonHang findById(long id);
 	
-	Page<DonHang> findDonHangByEmployee(SearchDonHangObject object, int page, int size, NguoiDung employee) throws ParseException;
+	Page<DonHang> findDonHangByShipper(SearchDonHangObject object, int page, int size, NguoiDung shipper) throws ParseException;
 
 	DonHang save(DonHang dh);
 	
 	List<Object> layDonHangTheoThangVaNam();
 
-	List<DonHang> findByTrangThaiDonHangAndEmployee(String string, NguoiDung employee);
+	List<DonHang> findByTrangThaiDonHangAndShipper(String string, NguoiDung shipper);
 
 	
 	List<DonHang> getDonHangByNguoiDung(NguoiDung currentUser);

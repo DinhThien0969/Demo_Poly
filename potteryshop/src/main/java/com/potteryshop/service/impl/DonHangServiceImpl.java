@@ -70,8 +70,8 @@ public class DonHangServiceImpl implements DonHangService {
 	}
 
 	@Override
-	public List<DonHang> findByTrangThaiDonHangAndEmployee(String trangThai, NguoiDung employee) {
-		return donHangRepo.findByTrangThaiDonHangAndEmployee(trangThai, employee);
+	public List<DonHang> findByTrangThaiDonHangAndShipper(String trangThai, NguoiDung shipper) {
+		return donHangRepo.findByTrangThaiDonHangAndShipper(trangThai, shipper);
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class DonHangServiceImpl implements DonHangService {
 	}
 
 	@Override
-	public Page<DonHang> findDonHangByEmployee(SearchDonHangObject object, int page, int size, NguoiDung employee) throws ParseException {
+	public Page<DonHang> findDonHangByShipper(SearchDonHangObject object, int page, int size, NguoiDung shipper) throws ParseException {
 		BooleanBuilder builder = new BooleanBuilder();
 
 		String trangThaiDon = object.getTrangThaiDon();
@@ -98,7 +98,7 @@ public class DonHangServiceImpl implements DonHangService {
 		String denNgay = object.getDenNgay();
 		SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
 		
-		builder.and(QDonHang.donHang.employee.eq(employee));
+		builder.and(QDonHang.donHang.shipper.eq(shipper));
 
 		if (!trangThaiDon.equals("")) {
 			builder.and(QDonHang.donHang.trangThaiDonHang.eq(trangThaiDon));
