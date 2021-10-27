@@ -96,7 +96,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/potteryshop/api/don-hang/assign?employee="+email+"&donHangId="+donHangId,
+ 			url : "http://localhost:8080/potteryshop/api/don-hang/assign?shipper="+email+"&donHangId="+donHangId,
  			enctype: 'multipart/form-data',
  	        
  			success : function(response) {
@@ -114,7 +114,7 @@ $(document).ready(function() {
 	$(document).on('click', '#btnDuyetDonHang', function (event) {
 		event.preventDefault();
 		resetData();
-	});
+	});	
 	
     // reset table after post, put, filter
     function resetData(){   	
@@ -164,8 +164,8 @@ $(document).ready(function() {
 				$("#nguoiDat").html("<strong>Người đặt</strong>:  "+ donHang.nguoiDat.hoTen);
 			}
 			
-			if(donHang.employee != null){
-				$("#employee").html("<strong>Employee</strong>: "+ donHang.employee.hoTen);
+			if(donHang.shipper != null){
+				$("#shipper").html("<strong>Shipper</strong>: "+ donHang.shipper.hoTen);
 			}
 			 
 			var check = donHang.trangThaiDonHang == "Hoàn thành" || donHang.trangThaiDonHang == "Chờ duyệt" ;

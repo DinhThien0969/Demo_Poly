@@ -185,7 +185,7 @@ public class CheckOutController {
 				if(clientCookies[i].getName().matches("[0-9]+"))
 				{						
 					clientCookies[i].setMaxAge(0);
-					clientCookies[i].setPath("/potteryshop");
+					clientCookies[i].setPath("/laptopshop");
 					response.addCookie(clientCookies[i]);
 				}
 			}

@@ -26,10 +26,10 @@
 						<h2 class="product-title">${sp.getTenSanPham()}</h2>
 						<h4 class="price">Mô tả sản phẩm</h4>
 						<c:if test = "${sp.getMauSac().length() > 0}">
-							<p class="product-description">Màu sắc: ${sp.getMauSac()}</p>
+							<p class="product-description">Màu sắc: ${sp.mauSac}</p>
 						</c:if>
 						<c:if test = "${sp.getKichThuoc().length() > 0}">
-							<p class="product-description">Kích thước: ${sp.getKichThuoc()}</p>
+							<p class="product-description">Kích thước: ${sp.kichThuoc}</p>
 						</c:if>
 						<c:if test = "${sp.getThietKe().length() > 0}">
 						<p class="product-description">Thiết kế: ${sp.getThietKe()}</p>
