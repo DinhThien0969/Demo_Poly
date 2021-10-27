@@ -111,13 +111,13 @@ public class AdminController {
 	@GetMapping("/don-hang")
 	public String quanLyDonHangPage(Model model) {
 		Set<VaiTro> vaiTro = new HashSet<>();
-		// lấy danh sách shipper
-		vaiTro.add(vaiTroService.findByTenVaiTro("ROLE_SHIPPER"));
-		List<NguoiDung> shippers = nguoiDungService.getNguoiDungByVaiTro(vaiTro);
-		for (NguoiDung shipper : shippers) {
-			shipper.setListDonHang(donHangService.findByTrangThaiDonHangAndShipper("Đang giao", shipper));
+		// lấy danh sách employee
+		vaiTro.add(vaiTroService.findByTenVaiTro("ROLE_EMPLOYEE"));
+		List<NguoiDung> employees = nguoiDungService.getNguoiDungByVaiTro(vaiTro);
+		for (NguoiDung employee : employees) {
+			employee.setListDonHang(donHangService.findByTrangThaiDonHangAndEmployee("Đang giao", employee));
 		}
-		model.addAttribute("allShipper", shippers);
+		model.addAttribute("allShipper", employees);
 		return "admin/quanLyDonHang";
 	}
 

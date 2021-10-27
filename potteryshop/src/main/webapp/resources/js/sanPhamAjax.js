@@ -268,6 +268,7 @@ $(document).ready(function() {
 		}); 
     }
     
+    
     // với danh mục khác
     $(document).on("click",".btnCapNhatOther", function(event){
 		event.preventDefault();
@@ -279,7 +280,6 @@ $(document).ready(function() {
 		$.get(href, function(sanPham) {
 			populate('.updateOtherForm', sanPham);
 			$("#idDanhMucKhac").val(sanPham.danhMuc.id);
-					
 			var hangSXId = sanPham.hangSanXuat.id;
 			$("#nhaSXIdKhac").val(hangSXId);	
 		});		

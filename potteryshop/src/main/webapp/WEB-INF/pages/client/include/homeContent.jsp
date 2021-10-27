@@ -20,16 +20,16 @@
 		    	<div class="top-3-grids">
 		    		<div class="section group">
 				<div class="grid_1_of_3 images_1_of_3">
-					  <a href="single.html"><img src="Frontend/img/acer.jpg"></a>
-					  <h3>Thương hiệu nổi bật </h3>
+					  <a href="/potteryshop/store?brand=BÌNH TÀI LỘC"><img src="Frontend/img/acer.jpg"></a>
+					  <h3>Sản phẩm nổi bật </h3>
 				</div>
 				<div class="grid_1_of_3 images_1_of_3 ">
-					   <a href="single.html"><img src="Frontend/img/lenovo2.png" style="background-color: white"></a>
-					  <h3 >Thương hiệu nổi bật</h3>
+					   <a href="/potteryshop/store?brand=HỒ LÔ GỐM SỨ"><img src="Frontend/img/lenovo2.png" style="background-color: white"></a>
+					  <h3 >Sản phẩm nổi bật</h3>
 				</div>
 				<div class="grid_1_of_3 images_1_of_3 ">
-					   <a href="single.html"><img src="Frontend/img/dell.png" style="background-color: white"></a>
-					  <h3>Thương hiệu nổi bật</h3>
+					   <a href="/potteryshop/store?brand=TRANH GỐM"><img src="Frontend/img/dell.png" style="background-color: white"></a>
+					  <h3>Sản phẩm nổi bật</h3>
 				</div>
 			</div>
 		    	</div>

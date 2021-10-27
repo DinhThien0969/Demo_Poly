@@ -21,17 +21,14 @@
 	<jsp:include page="template/sidebar.jsp"></jsp:include>
 
 	<div class="col-md-9 animated bounce">
-		<h3 class="page-header form-inline">Quản lý Đơn hàng</h3>
+		<h3 class="page-header form-inline">Quản lý Đơn hàng -Employee</h3>
 
 		<form class="form-inline" id="searchForm" name="searchObject">
-
+			<input id="idEmployee" type="hidden" value="${loggedInUser.id }">
 			<select class="form-control" id="trangThai">
-				<option value="Đang chờ giao">Đang chờ giao</option>
-				<option value="Đang giao">Đang giao</option>
+				<option value="Đang giao">Được phân công</option>
 				<option value="Chờ duyệt">Chờ duyệt</option>
 				<option value="Hoàn thành">Hoàn thành</option>
-				<option value="Đã bị hủy">Đã bị hủy</option>
-				<!-- <option value="">Tất cả</option> -->
 			</select>
 
 			<div class="form-group">
@@ -81,7 +78,7 @@
 		<form class="chiTietForm">
 			<div class="modal fade" id="chiTietModal" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document" style="width: 700px;">
+				<div class="modal-dialog " role="document">
 					<div class="modal-content">
 						<div class="modal-header">
 							<p class="h4 modal-title" id="maDonHang"></p>
@@ -93,8 +90,7 @@
 						<div class="modal-body">
 							<div class="row">
 								<div class="col-12">
-									<div class="card" style="padding-left: 40px;padding-right: 40px">
-
+									<div class="card" style="padding: 40px">
 										<div class="row pb-5 p-5">
 											<div class="col-md-6">
 												<h5 class="font-weight-bold mb-4">
@@ -106,7 +102,7 @@
 											</div>
 
 											<div class="col-md-6 text-right"
-												style="text-align: left; padding-left: 100px">
+												style="padding-left: 65px; text-align: left">
 												<h5 class="font-weight-bold mb-4">
 													<strong>Thông tin đơn hàng</strong>
 												</h5>
@@ -128,14 +124,15 @@
 															<th
 																class="border-0 text-uppercase small font-weight-bold">Tên
 																sản phẩm</th>
-
 															<th
 																class="border-0 text-uppercase small font-weight-bold">Đơn
 																giá</th>
 															<th
 																class="border-0 text-uppercase small font-weight-bold">Số
 																lượng đặt</th>
-
+<!-- 															<th
+																class="border-0 text-uppercase small font-weight-bold">Số
+																lượng nhận</th> -->
 														</tr>
 													</thead>
 													<tbody>
@@ -157,9 +154,9 @@
 											<h5 class="font-weight-bold mb-4">
 												<strong>Thông tin khác</strong>
 											</h5>
-											<p class="mb-1" id="shipper"></p>
+											<p class="mb-1" id="employee"></p>
 											<p class="mb-1" id="nguoiDat"></p>
-											<p id="ghiChu"></p>
+											<p class="mb-1" id="ghiChu"></p>
 										</div>
 									</div>
 								</div>
@@ -174,17 +171,18 @@
 			</div>
 		</form>
 	</div>
+
 	<div class="row col-md-6">
-		<form class="phanCongForm" id="form">
+		<form class="capNhatTrangThaiForm" id="form">
 			<div>
-				<div class="modal fade" id="phanCongModal" tabindex="-1"
+				<div class="modal fade" id="capNhatTrangThaiModal" tabindex="-1"
 					role="dialog" aria-labelledby="exampleModalLabel"
 					aria-hidden="true" data-backdrop="static" data-keyboard="false">
-					<div class="modal-dialog" role="document">
+					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Phân công
-									đơn hàng</h5>
+								<h5 class="modal-title" id="exampleModalLabel">Cập nhật
+									trạng thái đơn</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
@@ -195,50 +193,8 @@
 									<input type="hidden" id="donHangId" value="">
 								</div>
 								<div class="form-group">
-									Chọn employee cho đơn hàng: <select class="form-control"
-										name="employee">
-										<c:forEach var="employee" items="${allEmployee }">
-											<option value="${employee.email }">${employee.hoTen }
-												(${fn:length(employee.listDonHang)})</option>
-										</c:forEach>
-									</select>
-								</div>
-
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Hủy</button>
-									<input class="btn btn-primary" id="btnPhanCongSubmit"
-										type="button" value="Xác nhận" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-	<div class="row col-md-6">
-		<form class="capNhatTrangThaiForm" id="form">
-			<div>
-				<div class="modal fade" id="capNhatTrangThaiModal" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalLabel"
-					aria-hidden="true" data-backdrop="static" data-keyboard="false">
-					<div class="modal-dialog " role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Xác nhận hoàn thành đơn</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="form-group">
-									<input type="hidden" id="idDonHangXacNhan" value="">
-								</div>
-								<div class="form-group">
 									<div class="col-md-12">
-										<table class="table chiTietTable"
+										<table class="table chiTietCapNhatTable"
 											style="text-align: center;">
 											<thead>
 												<tr>
@@ -256,13 +212,14 @@
 											<tbody>
 											</tbody>
 										</table>
-										<h4 id="tongTienXacNhan" style="float: right; font-weight: bold;padding-right: 50px">abc</h4>
+										<h4 id="tongTienCapNhat"
+											style="float: right; font-weight: bold;padding-right: 50px"></h4>
 									</div>
 
 									<div>
 										<h5 id="ghiChu" style="font-weight: bold; padding-top: 10px">Ghi
 											chú</h5>
-										<textarea rows="3" cols="75" id="ghiChuAdmin"></textarea>
+										<textarea rows="3" cols="117" id="ghiChuEmployee"></textarea>
 									</div>
 								</div>
 								<div class="modal-footer">
@@ -317,6 +274,6 @@
 		});
 	</script>
 
-	<script src="<c:url value='/js/donHangAjax.js'/>"></script>
+	<script src="<c:url value='/js/employee/donHangEmployeeAjax.js'/>"></script>
 </body>
 </html>

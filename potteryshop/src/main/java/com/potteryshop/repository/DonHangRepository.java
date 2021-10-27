@@ -11,7 +11,7 @@ import com.potteryshop.entities.NguoiDung;
 
 public interface DonHangRepository extends JpaRepository<DonHang, Long>, QuerydslPredicateExecutor<DonHang> {
 
-	public List<DonHang> findByTrangThaiDonHangAndShipper(String trangThai, NguoiDung shipper);
+	public List<DonHang> findByTrangThaiDonHangAndEmployee(String trangThai, NguoiDung employee);
 
 	@Query(value = "select DATE_FORMAT(dh.ngayNhanHang, '%m') as month, "
 			+ " DATE_FORMAT(dh.ngayNhanHang, '%Y') as year, sum(ct.soLuongNhanHang * ct.donGia) as total "
