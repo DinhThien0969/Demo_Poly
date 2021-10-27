@@ -49,8 +49,8 @@ public class DonHang {
 	private NguoiDung nguoiDat;
 
 	@ManyToOne(optional = true)
-	@JoinColumn(name = "ma_shipper")
-	private NguoiDung shipper;
+	@JoinColumn(name = "ma_employee")
+	private NguoiDung employee;
 
 	private long tongGiaTri;
 
@@ -126,12 +126,12 @@ public class DonHang {
 		this.nguoiDat = nguoiDat;
 	}
 
-	public NguoiDung getShipper() {
-		return shipper;
+	public NguoiDung getEmployee() {
+		return employee;
 	}
 
-	public void setShipper(NguoiDung shipper) {
-		this.shipper = shipper;
+	public void setEmployee(NguoiDung employee) {
+		this.employee = employee;
 	}
 
 	public String getTrangThaiDonHang() {

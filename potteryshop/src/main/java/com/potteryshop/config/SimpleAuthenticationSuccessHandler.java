@@ -40,9 +40,9 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if (authority.getAuthority().equals("ROLE_SHIPPER")) {
+			} else if (authority.getAuthority().equals("ROLE_EMPLOYEE")) {
 				try {
-					redirectStrategy.sendRedirect(request, response, "/shipper");
+					redirectStrategy.sendRedirect(request, response, "/employee");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -17,7 +17,6 @@
 	rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" href="Frontend/css/responsiveslides.css">
-<link rel="stylesheet" href="Frontend/css/stylele.css">
 <script src="Frontend/js/jquery.min.js"></script>
 <script src="Frontend/js/responsiveslides.min.js"></script>
 <script src="js/client/accounting.js"></script>
@@ -47,7 +46,12 @@
 	<div class="wrap">
 		<!----start-Header---->
 		<div class="header">
-			
+			<div class="search-bar">
+				<form action="/potteryshop/search">
+					<input type="text" name="name"><input type="submit"
+						value="Search" />
+				</form>
+			</div>
 			<div class="clear"></div>
 
 			<div class="header-top-nav ">
@@ -57,7 +61,7 @@
 						<li>Xin chào: ${loggedInUser.hoTen}</li>
 
 
-						 	<%-- <li><a href="<%=request.getContextPath()%>/checkout"">Thanh toán</a></li>  --%>
+						<!-- 	<li><a href="<%=request.getContextPath()%>/checkout"">Thanh toán</a></li> -->
 						<li><a href="<%=request.getContextPath()%>/account">Tài
 								khoản</a></li>
 						<li><a href="<%=request.getContextPath()%>/cart"><span>Giỏ
@@ -79,7 +83,6 @@
 
 					</ul>
 				</c:if>
-				
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -90,7 +93,7 @@
 			<!----start-logo---->
 			<div class="logo">
 				<a href="<%=request.getContextPath()%>/"><img
-					src="Frontend/img/logo6.png" title="logoshop" /></a>
+					src="Frontend/img/logo3.png" title="logo" /></a>
 			</div>
 			<!----end-logo---->
 			<!----start-top-nav---->
@@ -98,7 +101,7 @@
 				<ul>
 					<li><a href="<%=request.getContextPath()%>/">Trang chủ</a></li>
 
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cửa hàng <span class="caret"></span></a>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="<%=request.getContextPath()%>">Cửa hàng <span class="caret"></span></a>
 						<ul class="dropdown-menu" style="background: #94cb32" id="danhmuc2">
 						</ul></li>
 					<li><a href="<%=request.getContextPath()%>/shipping">Miễn
@@ -107,14 +110,6 @@
 							hành tận nơi</a></li>
 
 					<li><a href="<%=request.getContextPath()%>/contact">Liên hệ</a></li>
-					<li>
-					<div class="search-bar">
-				<form action="/potteryshop/search">
-					<input type="text" name="name"><input type="submit"
-						value="Search" />
-				</form>
-			       </div>
-			       </li>
 				</ul>
 			</div>
 			<div class="clear"></div>

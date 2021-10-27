@@ -36,8 +36,8 @@ public class DataSeeder implements ApplicationListener<ContextRefreshedEvent> {
 			roleRepository.save(new VaiTro("ROLE_MEMBER"));
 		}
 		
-		if (roleRepository.findByTenVaiTro("ROLE_SHIPPER") == null) {
-			roleRepository.save(new VaiTro("ROLE_SHIPPER"));
+		if (roleRepository.findByTenVaiTro("ROLE_EMPLOYEE") == null) {
+			roleRepository.save(new VaiTro("ROLE_EMPLOYEE"));
 		}
 
 		// Admin account
@@ -71,7 +71,7 @@ public class DataSeeder implements ApplicationListener<ContextRefreshedEvent> {
 			member.setEmail("shipper@gmail.com");
 			member.setPassword(passwordEncoder.encode("123456"));
 			HashSet<VaiTro> roles = new HashSet<>();
-			roles.add(roleRepository.findByTenVaiTro("ROLE_SHIPPER"));
+			roles.add(roleRepository.findByTenVaiTro("ROLE_EMPLOYEE"));
 			member.setVaiTro(roles);
 			userRepository.save(member);
 		}
