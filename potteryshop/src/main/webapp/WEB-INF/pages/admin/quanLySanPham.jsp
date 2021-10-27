@@ -218,8 +218,8 @@
 						<div class="modal-body">
 							<div class="row">
 								<div>
-									<input type="hidden" class="form-control" name='danhMucId'
-										id="idDanhMucKhac">
+									<!-- <input type="hidden" class="form-control" name='danhMucId'
+										id="idDanhMucKhac"> -->
 								</div>
 								<div>
 									<input type="hidden" class="form-control" name="id"
@@ -236,10 +236,19 @@
 									<label for="inputState">Hãng Sản Xuất</label> <select
 										name="nhaSXId" id="nhaSXIdKhac" class="form-control">
 										<c:forEach var="nhanHieu" items="${listNhanHieu }">
-											<option value="${nhanHieu.id }">${nhanHieu.tenHangSanXuat}
+											<option value="${nhanHieu.id}">${nhanHieu.tenHangSanXuat}
 											</option>
 										</c:forEach>
 									</select>
+								</div>
+								<div class="form-group col-md-6">
+									 <label for="inputState">Danh mục</label> 
+									<select name="danhMucId" id="idDanhMucKhac" class="form-control" >
+										<c:forEach var="danhMuc" items="${listDanhMuc }">
+											<option value="${danhMuc.id}">${danhMuc.tenDanhMuc}</option>
+										</c:forEach>
+									</select>
+									
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inputPassword4">Đơn giá</label> <input
@@ -247,7 +256,6 @@
 										value="0" id="donGiaKhac">
 								</div>
 							</div>
-
 							<div class="row">
 								<div class="form-group col-md-12">
 									<label for="inputPassword4">Mô tả chung</label>
@@ -325,7 +333,6 @@
 									<div class="container-fliud">
 										<div class="wrapper row">
 											<div class="preview col-md-6">
-
 												<div class="preview-pic tab-content">
 													<div class="tab-pane active" id="pic-1">
 														<img style="width: 350px; height: 350px" class="hinhAnh" />
@@ -358,7 +365,6 @@
 		</form>
 	</div>
 	</div>
-
 
 	<jsp:include page="template/footer.jsp"></jsp:include>
 	<script

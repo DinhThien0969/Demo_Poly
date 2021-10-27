@@ -47,13 +47,13 @@ public class SanPhamServiceImpl implements SanPhamService {
 		sanPham.setThietKe(dto.getThietKe());
 		sanPham.setChatLieu(dto.getChatLieu());
 
-		
+		System.out.println(danhMucRepo.findById(dto.getDanhMucId()).get());
+
 		sanPham.setDanhMuc(danhMucRepo.findById(dto.getDanhMucId()).get());
 		sanPham.setHangSanXuat(hangSanXuatRepo.findById(dto.getNhaSXId()).get());
 		sanPham.setDonGia(Long.parseLong(dto.getDonGia()));
 		sanPham.setThongTinBaoHanh(dto.getThongTinBaoHanh());
 		sanPham.setThongTinChung(dto.getThongTinChung());
-		
 
 		return sanPham;
 	}

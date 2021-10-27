@@ -195,11 +195,11 @@
 									<input type="hidden" id="donHangId" value="">
 								</div>
 								<div class="form-group">
-									Chọn employee cho đơn hàng: <select class="form-control"
-										name="employee">
-										<c:forEach var="employee" items="${allEmployee }">
-											<option value="${employee.email }">${employee.hoTen }
-												(${fn:length(employee.listDonHang)})</option>
+									Chọn shipper cho đơn hàng: <select class="form-control"
+										name="shipper">
+										<c:forEach var="shipper" items="${allShipper }">
+											<option value="${shipper.email }">${shipper.hoTen }
+												(${fn:length(shipper.listDonHang)})</option>
 										</c:forEach>
 									</select>
 								</div>
