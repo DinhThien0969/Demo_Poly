@@ -21,10 +21,10 @@
 	<jsp:include page="template/sidebar.jsp"></jsp:include>
 
 	<div class="col-md-9 animated bounce">
-		<h3 class="page-header form-inline">Quản lý Đơn hàng -Employee</h3>
+		<h3 class="page-header form-inline">Quản lý Đơn hàng -Shipper</h3>
 
 		<form class="form-inline" id="searchForm" name="searchObject">
-			<input id="idEmployee" type="hidden" value="${loggedInUser.id }">
+			<input id="idShipper" type="hidden" value="${loggedInUser.id }">
 			<select class="form-control" id="trangThai">
 				<option value="Đang giao">Được phân công</option>
 				<option value="Chờ duyệt">Chờ duyệt</option>
@@ -154,7 +154,7 @@
 											<h5 class="font-weight-bold mb-4">
 												<strong>Thông tin khác</strong>
 											</h5>
-											<p class="mb-1" id="employee"></p>
+											<p class="mb-1" id="shipper"></p>
 											<p class="mb-1" id="nguoiDat"></p>
 											<p class="mb-1" id="ghiChu"></p>
 										</div>
@@ -219,7 +219,7 @@
 									<div>
 										<h5 id="ghiChu" style="font-weight: bold; padding-top: 10px">Ghi
 											chú</h5>
-										<textarea rows="3" cols="117" id="ghiChuEmployee"></textarea>
+										<textarea rows="3" cols="117" id="ghiChuShipper"></textarea>
 									</div>
 								</div>
 								<div class="modal-footer">
@@ -274,6 +274,6 @@
 		});
 	</script>
 
-	<script src="<c:url value='/js/employee/donHangEmployeeAjax.js'/>"></script>
+	<script src="<c:url value='/js/shipper/donHangShipperAjax.js'/>"></script>
 </body>
 </html>

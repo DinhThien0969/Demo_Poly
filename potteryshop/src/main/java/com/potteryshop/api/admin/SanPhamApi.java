@@ -97,7 +97,9 @@ public class SanPhamApi {
 			errors = null;
 		} else {
 			// lưu sản phẩm
-			SanPham sp = sanPhamService.save(newSanPhamDto);
+			/*
+			 * newSanPhamDto.setDanhMucId(6);
+			 */			SanPham sp = sanPhamService.save(newSanPhamDto);
 			ro.setData(sp);
 			saveImageForProduct(sp, newSanPhamDto, request);
 			ro.setStatus("success");
@@ -113,13 +115,15 @@ public class SanPhamApi {
 	}
 
 	
-	// lưu ảnh của sản phẩm vào thư mục
+	// lưu ảnh của sản phẩm 
 	public void saveImageForProduct(SanPham sp, SanPhamDto dto, HttpServletRequest request) {
 
 		MultipartFile productImage = dto.getHinhAnh();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		Path path = Paths.get(rootDirectory + "/resources/images/" + sp.getId() + ".png");
-		System.out.println(productImage != null && !productImage.isEmpty());
+		boolean a= productImage != null && !productImage.isEmpty();
+		if(a==false) {System.out.println("Chưa update ảnh");
+}
 		if (productImage != null && !productImage.isEmpty()) {
 
 			try {

@@ -52,11 +52,11 @@ public class DonHangApi {
 
 	// phân công đơn hàng
 	@PostMapping("/assign")
-	public void phanCongDonHang(@RequestParam("employee") String emailEmployee,
+	public void phanCongDonHang(@RequestParam("shipper") String emailShipper,
 			@RequestParam("donHangId") long donHangId) {
 		DonHang dh = donHangService.findById(donHangId);
 		dh.setTrangThaiDonHang("Đang giao");
-		dh.setEmployee(nguoiDungService.findByEmail(emailEmployee));
+		dh.setShipper(nguoiDungService.findByEmail(emailShipper));
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {

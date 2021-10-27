@@ -40,6 +40,7 @@ public class DanhMucServiceImpl implements DanhMucService {
 
 	@Override
 	public DanhMuc getDanhMucById(long id) {
+		System.out.print(id);
 		return repo.findById(id).get();
 	}
 

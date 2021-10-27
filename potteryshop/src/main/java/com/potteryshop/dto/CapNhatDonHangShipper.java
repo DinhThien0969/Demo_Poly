@@ -2,10 +2,10 @@ package com.potteryshop.dto;
 
 import java.util.List;
 
-public class CapNhatDonHangEmployee {
+public class CapNhatDonHangShipper {
 	
 	private long idDonHang;
-	private String ghiChuEmployee;
+	private String ghiChuShipper;
 	private List<CapNhatChiTietDon> danhSachCapNhatChiTietDon;
 
 
@@ -30,12 +30,12 @@ public class CapNhatDonHangEmployee {
 		}
 	}
 
-	public String getGhiChuEmployee() {
-		return ghiChuEmployee;
+	public String getGhiChuShipper() {
+		return ghiChuShipper;
 	}
 
-	public void setGhiChuEmployee(String ghiChuEmployee) {
-		this.ghiChuEmployee = ghiChuEmployee;
+	public void setGhiChuShipper(String ghiChuShipper) {
+		this.ghiChuShipper = ghiChuShipper;
 	}
 
 	public List<CapNhatChiTietDon> getDanhSachCapNhatChiTietDon() {
