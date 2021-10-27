@@ -40,11 +40,6 @@ public class SanPhamDtoValidator implements Validator{
 		}
 		String tenDanhMuc = dmService.getDanhMucById(s.getDanhMucId()).getTenDanhMuc().toLowerCase();
 		
-		if(tenDanhMuc.contains("Laptop".toLowerCase())) {
-			ValidationUtils.rejectIfEmpty(errors, "mauSac", "error.manHinh", "Màu sắc không được trống");
-			ValidationUtils.rejectIfEmpty(errors, "thietKe", "error.thietKe", "Thiết kế không được trống");
-			ValidationUtils.rejectIfEmpty(errors, "kichThuoc", "error.dungLuongPin", "Kích thước  được trống");			
-		}
 		
 	}
 

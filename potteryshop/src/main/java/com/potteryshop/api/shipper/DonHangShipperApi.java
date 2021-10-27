@@ -1,4 +1,4 @@
-package com.potteryshop.api.employee;
+package com.potteryshop.api.shipper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.potteryshop.dto.CapNhatDonHangEmployee;
+import com.potteryshop.dto.CapNhatDonHangShipper;
 import com.potteryshop.dto.SearchDonHangObject;
 import com.potteryshop.entities.ChiTietDonHang;
 import com.potteryshop.entities.DonHang;
@@ -23,8 +23,8 @@ import com.potteryshop.service.DonHangService;
 import com.potteryshop.service.NguoiDungService;
 
 @RestController
-@RequestMapping("/api/employee/don-hang")
-public class DonHangEmployeeApi {
+@RequestMapping("/api/shipper/don-hang")
+public class DonHangShipperApi {
 
 	@Autowired
 	private DonHangService donHangService;
@@ -34,7 +34,7 @@ public class DonHangEmployeeApi {
 
 	@GetMapping("/all")
 	public Page<DonHang> getDonHangByFilter(@RequestParam(defaultValue = "1") int page, @RequestParam String trangThai,
-			@RequestParam String tuNgay, @RequestParam String denNgay, @RequestParam long idEmployee)
+			@RequestParam String tuNgay, @RequestParam String denNgay, @RequestParam long idShipper)
 			throws ParseException {
 
 		SearchDonHangObject object = new SearchDonHangObject();
@@ -42,8 +42,8 @@ public class DonHangEmployeeApi {
 		object.setTrangThaiDon(trangThai);
 		object.setTuNgay(tuNgay);
 
-		NguoiDung employee = nguoiDungService.findById(idEmployee);
-		Page<DonHang> listDonHang = donHangService.findDonHangByEmployee(object, page, 6, employee);
+		NguoiDung shipper = nguoiDungService.findById(idShipper);
+		Page<DonHang> listDonHang = donHangService.findDonHangByShipper(object, page, 6, shipper);
 		return listDonHang;
 	}
 
@@ -53,11 +53,11 @@ public class DonHangEmployeeApi {
 	}
 
 	@PostMapping("/update")
-	public void capNhatTrangThaiDonHang(@RequestBody CapNhatDonHangEmployee capNhatDonHangEmployee) {
-		DonHang donHang = donHangService.findById(capNhatDonHangEmployee.getIdDonHang());
+	public void capNhatTrangThaiDonHang(@RequestBody CapNhatDonHangShipper capNhatDonHangShipper) {
+		DonHang donHang = donHangService.findById(capNhatDonHangShipper.getIdDonHang());
 
 		for (ChiTietDonHang chiTiet : donHang.getDanhSachChiTiet()) {
-			for (CapNhatDonHangEmployee.CapNhatChiTietDon chiTietCapNhat : capNhatDonHangEmployee
+			for (CapNhatDonHangShipper.CapNhatChiTietDon chiTietCapNhat : capNhatDonHangShipper
 					.getDanhSachCapNhatChiTietDon()) {
 				if (chiTiet.getId() == chiTietCapNhat.getIdChiTiet()) {
 					chiTiet.setSoLuongNhanHang(chiTietCapNhat.getSoLuongNhanHang());
@@ -77,10 +77,10 @@ public class DonHangEmployeeApi {
 
 		donHang.setTrangThaiDonHang("Chờ duyệt");
 
-		String ghiChu = capNhatDonHangEmployee.getGhiChuEmployee();
+		String ghiChu = capNhatDonHangShipper.getGhiChuShipper();
 
 		if (!ghiChu.equals("")) {
-			donHang.setGhiChu("Ghi chú Employee: \n" + capNhatDonHangEmployee.getGhiChuEmployee());
+			donHang.setGhiChu("Ghi chú shipper: \n" + capNhatDonHangShipper.getGhiChuShipper());
 		}
 		donHangService.save(donHang);
 

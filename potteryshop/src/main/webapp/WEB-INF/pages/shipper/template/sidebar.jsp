@@ -21,12 +21,12 @@
         <ul class="nav navbar-nav side-bar">       
          
           <li class="side-bar tmargin">
-            <a href="<c:url value='/employee/don-hang' />">
+            <a href="<c:url value='/shipper/don-hang' />">
               <span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Quản lý đơn hàng</a>
           </li>
           
           <li class="side-bar">
-            <a href="<c:url value='/employee/profile' />">
+            <a href="<c:url value='/shipper/profile' />">
               <span class="glyphicon glyphicon-user">&nbsp;</span>Thông tin cá nhân</a>
           </li>
 

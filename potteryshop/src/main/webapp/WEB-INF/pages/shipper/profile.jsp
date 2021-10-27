@@ -78,7 +78,7 @@
 
 	<div class="row col-md-6">
 		<form class="formCapNhat"
-			action="${contextPath }/employee/profile/update" method="post">
+			action="${contextPath }/shipper/profile/update" method="post">
 			<div>
 				<div class="modal fade" id="capNhatModal" tabindex="-1"
 					role="dialog" aria-labelledby="exampleModalLabel"
@@ -176,6 +176,6 @@
 	</div>
 	</div>
 	<jsp:include page="template/footer.jsp"></jsp:include>
-	<script src="<c:url value='/js/employee/profileEmployeeAjax.js'/>"></script>
+	<script src="<c:url value='/js/shipper/profileShipperAjax.js'/>"></script>
 </body>
 </html>

@@ -28,12 +28,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<c:url value='/employee'/>">Pottery Shop - Trang Employee</a>
+        <a class="navbar-brand" href="<c:url value='/shipper'/>">Pottery Shop - Trang Shipper</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="<c:url value='/employee/profile' />">
+            <a href="<c:url value='/shipper/profile' />">
               <span class="glyphicon glyphicon-user">&nbsp;</span>Xin chào: ${loggedInUser.hoTen }</a>
           </li>
           <li>

@@ -17,9 +17,9 @@ import com.potteryshop.entities.NguoiDung;
 import com.potteryshop.service.NguoiDungService;
 
 @Controller
-@RequestMapping("/employee")
+@RequestMapping("/shipper")
 @SessionAttributes("loggedInUser")
-public class EmployeeController {
+public class ShipperController {
 	
 	
 	@Autowired
@@ -35,14 +35,14 @@ public class EmployeeController {
 	
 	@GetMapping(value= {"", "/don-hang"})
 	public String shipperPage(Model model) {
-		return "employee/quanLyDonHang";
+		return "shipper/quanLyDonHang";
 	}
 	
 	@GetMapping("/profile")
 	public String profilePage(Model model, HttpServletRequest request) {
 		model.addAttribute("user", getSessionUser(request));
 		System.out.println(getSessionUser(request).toString());
-		return "employee/profile";
+		return "shipper/profile";
 	}
 	
 	@PostMapping("/profile/update")
@@ -52,7 +52,7 @@ public class EmployeeController {
 		currentUser.setHoTen(nd.getHoTen());
 		currentUser.setSoDienThoai(nd.getSoDienThoai());
 		nguoiDungService.updateUser(currentUser);
-		return "redirect:/employee/profile";
+		return "redirect:/shipper/profile";
 	}
 	public NguoiDung getSessionUser(HttpServletRequest request) {
 		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
