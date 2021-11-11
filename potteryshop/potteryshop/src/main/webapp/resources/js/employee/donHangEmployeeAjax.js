@@ -16,11 +16,11 @@ $(document).ready(function() {
 					var sum = 0;
 					if(donHang.trangThaiDonHang == "Hoàn thành" || donHang.trangThaiDonHang == "Chờ duyệt" ){
 						$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-							sum += chiTiet.donGia * chiTiet.soLuongNhanHang;
+							sum += chiTiet.sanPham.donGia/chiTiet.soLuongDat * chiTiet.soLuongNhanHang;
 						});
 					} else {
 						$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-							sum += chiTiet.donGia * chiTiet.soLuongDat;
+							sum += chiTiet.sanPham.donGia/chiTiet.soLuongDat * chiTiet.soLuongDat;
 						});
 					}
 					var donHangRow = '<tr>' +
@@ -96,7 +96,7 @@ $(document).ready(function() {
 				// tính giá trị đơn hàng
 			 var sum = 0;
 				$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-					sum += chiTiet.donGia * chiTiet.soLuong;
+					sum += chiTiet.sanPham.donGia/chiTiet.soLuongDat * chiTiet.soLuong;
 			 });
 							  
 			 var donHangRow = '<tr>' +
@@ -173,14 +173,14 @@ $(document).ready(function() {
 				var chiTietRow = '<tr>' +
 				'<td>' + stt + '</td>' +
                 '<td>' + chiTiet.sanPham.tenSanPham + '</td>' +
-                '<td>' + chiTiet.donGia + '</td>'+
+                '<td>' + chiTiet.sanPham.donGia/chiTiet.soLuongDat + '</td>'+
                 '<td>' + chiTiet.soLuongDat+ '</td>';
 				
                 if(check){
 				    chiTietRow += '<td>' + chiTiet.soLuongNhanHang + '</td>';
-				    sum += chiTiet.donGia * chiTiet.soLuongNhanHang;
+				    sum += chiTiet.sanPham.donGia/chiTiet.soLuongDat * chiTiet.soLuongNhanHang;
 			    } else {
-                    sum += chiTiet.donGia * chiTiet.soLuongDat;
+                    sum += chiTiet.sanPham.donGia/chiTiet.soLuongDat * chiTiet.soLuongDat;
 			    }
 				
 				 $('.chiTietTable tbody').append(chiTietRow);
@@ -214,7 +214,7 @@ $(document).ready(function() {
 				var chiTietRow = '<tr>' +
 				'<td>' + stt + '</td>' +
                 '<td>' + chiTiet.sanPham.tenSanPham + '</td>' +
-                '<td>' + chiTiet.donGia + '</td>'+
+                '<td>' + chiTiet.sanPham.donGia/chiTiet.soLuongDat + '</td>'+
                 '<td>' + chiTiet.soLuongDat + '</td>'+
                 '<td><input type="number" class="soLuongNhan" style="width: 40px; text-align: center;" value ="'+chiTiet.soLuongDat+'" min="0" max="'+chiTiet.soLuongDat+'" ></td>'+
                 '<td><input type="hidden" value="'+chiTiet.id+'" ></td>'
@@ -223,7 +223,7 @@ $(document).ready(function() {
 	    	  });		
 			var sum = 0;
 			$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-				sum += chiTiet.donGia * chiTiet.soLuongDat;
+				sum += chiTiet.sanPham.donGia/chiTiet.soLuongDat * chiTiet.soLuongDat;
 			});
 			$("#tongTienCapNhat").text("Tổng : "+ sum);
 		});

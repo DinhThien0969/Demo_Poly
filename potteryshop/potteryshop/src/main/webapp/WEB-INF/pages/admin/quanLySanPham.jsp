@@ -268,12 +268,12 @@
 										name="thongTinBaoHanh">
 								</div>
                                  <div class="form-group col-md-6">
-									<label for="inputEmail4">Màu Sắc</label> <input
+									<label for="inputEmail4">Chất men</label> <input
 										type="text" class="form-control" id="inputEmail4"
 										name="mauSac">
 								</div>
 								<div class="form-group col-md-6">
-									<label for="inputEmail4">Chất liệu</label> <input
+									<label for="inputEmail4">Chất liệu gốm</label> <input
 										type="text" class="form-control" id="inputEmail4"
 										name="chatLieu">
 								</div>
@@ -283,7 +283,7 @@
 										name="kichThuoc">
 								</div>
 								<div class="form-group col-md-6">
-									<label for="inputEmail4">Thiết kế</label> <input
+									<label for="inputEmail4">Họa tiết gốm</label> <input
 										type="text" class="form-control" id="inputEmail4"
 										name="thietKe">
 								</div>

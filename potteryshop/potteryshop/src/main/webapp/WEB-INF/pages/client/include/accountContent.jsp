@@ -68,7 +68,7 @@
 							<td>${donHang.ngayNhanHang}</td>
 
 							<%-- 							<c:set var="tongGiaTri"
-								value="${tongGiaTri + chiTiet.soLuongNhanHang*chiTiet.donGia}" /> --%>
+								value="${tongGiaTri + chiTiet.soLuongNhanHang*chiTiet.sanPham.donGia}" /> --%>
 							<td><c:forEach var="chiTiet"
 									items="${donHang.danhSachChiTiet}">
 									<p>
@@ -82,18 +82,19 @@
 											<p>Số lượng: ${chiTiet.soLuongDat }</p>
 											<hr>
 											<c:set var="tongGiaTri"
-												value="${tongGiaTri + chiTiet.soLuongDat*chiTiet.donGia}" />
+												value="${tongGiaTri + chiTiet.soLuongDat*chiTiet.sanPham.donGia}" />
 										</c:when>
 										<c:otherwise >
 											<p>Số lượng: ${chiTiet.soLuongNhanHang }</p>
 											<hr>
 											<c:set var="tongGiaTri"
-												value="${tongGiaTri + chiTiet.soLuongNhanHang*chiTiet.donGia}" />
+												value="${tongGiaTri + chiTiet.soLuongNhanHang*chiTiet.sanPham.donGia}" />
 										</c:otherwise>
 									</c:choose>
 								</c:forEach></td>
 
 							<td class="tongGiaTri">${tongGiaTri}</td>
+							<c:remove var="tongGiaTri"/>
 							<td>${donHang.trangThaiDonHang}</td>
 						</tr>
 					</c:forEach>

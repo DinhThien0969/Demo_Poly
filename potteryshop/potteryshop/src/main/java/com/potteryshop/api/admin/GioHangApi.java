@@ -142,6 +142,33 @@ public class GioHangApi  {
 		ro.setStatus("success");
 		return ro;
 	}
+	@GetMapping("/changSanPhamQuanityNew")
+	public ResponseObject changeQuanityNew(@RequestParam String id,@RequestParam String value,HttpServletRequest request,HttpServletResponse response) {
+		NguoiDung currentUser = getSessionUser(request);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		ResponseObject ro = new ResponseObject();
+		if(auth == null || auth.getPrincipal() == "anonymousUser" )    //Su dung cookie de luu
+		{
+			
+			
+		}else //Su dung database de luu
+		{
+			Cookie clientCookies[] = request.getCookies();
+			for(int i=0;i<clientCookies.length;i++)
+			{
+				if(clientCookies[i].getName().equals(id))
+				{						
+					clientCookies[i].setValue(value);
+					clientCookies[i].setPath("/potteryshop");
+					clientCookies[i].setMaxAge(60*60*24*7);
+					response.addCookie(clientCookies[i]);
+					break;
+				}
+			}
+		}
+		ro.setStatus("success");
+		return ro;
+	}
 	
 	@GetMapping("/deleteFromCart")
 	public ResponseObject deleteSanPham(@RequestParam String id,HttpServletRequest request,HttpServletResponse response) {

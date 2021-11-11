@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+ <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -27,8 +27,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="<c:url value='/admin'/>">Pottery Shop - Trang Quản Trị</a>
+        </button><a class="navbar-brand" href="<c:url value='/'/>" ><span class="glyphicon glyphicon-home">&nbsp;</span>
+            Trang chủ</a>
+        <a class="navbar-brand" href="<c:url value='/admin'/>" ><span class="glyphicon glyphicon-lock">&nbsp;</span>
+            Pottery Shop - Trang Quản Trị</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">

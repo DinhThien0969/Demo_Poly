@@ -17,11 +17,11 @@ $(document).ready(function() {
 					var check = donHang.trangThaiDonHang == "Hoàn thành" || donHang.trangThaiDonHang == "Chờ duyệt";
 					if(check){
 						$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-							sum += chiTiet.donGia * chiTiet.soLuongNhanHang;
+							sum += chiTiet.sanPham.donGia * chiTiet.soLuongNhanHang;
 						});
 					} else {
 						$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-							sum += chiTiet.donGia * chiTiet.soLuongDat;
+							sum += chiTiet.sanPham.donGia * chiTiet.soLuongDat;
 						});
 					}
 
@@ -74,7 +74,7 @@ $(document).ready(function() {
 	
 	
     // event khi click vào button Chi tiết đơn
-	$(document).on('click', '.btnPhanCong', function (event){
+$(document).on('click', '.btnPhanCong', function (event){
 		event.preventDefault();
 		var donHangId = $(this).parent().prev().children().val();	
 		$("#donHangId").val(donHangId);
@@ -165,7 +165,7 @@ $(document).ready(function() {
 			}
 			
 			if(donHang.employee != null){
-				$("#employee").html("<strong>Employee</strong>: "+ donHang.employee.hoTen);
+$("#employee").html("<strong>Employee</strong>: "+ donHang.employee.hoTen);
 			}
 			 
 			var check = donHang.trangThaiDonHang == "Hoàn thành" || donHang.trangThaiDonHang == "Chờ duyệt" ;
@@ -179,14 +179,14 @@ $(document).ready(function() {
 				var chiTietRow = '<tr>' +
 				'<td>' + stt + '</td>' +
                 '<td>' + chiTiet.sanPham.tenSanPham + '</td>' +
-                '<td>' + chiTiet.donGia + '</td>'+
+                '<td>' + chiTiet.sanPham.donGia + '</td>'+
                 '<td>' + chiTiet.soLuongDat+ '</td>';
 
 				if(check){
 					chiTietRow += '<td>' + chiTiet.soLuongNhanHang + '</td>';
-					sum += chiTiet.donGia * chiTiet.soLuongNhanHang;
+					sum += chiTiet.sanPham.donGia * chiTiet.soLuongNhanHang;
 				} else {
-	                sum += chiTiet.donGia * chiTiet.soLuongDat;
+	                sum += chiTiet.sanPham.donGia * chiTiet.soLuongDat;
 				}
 	             
 				$('.chiTietTable tbody').append(chiTietRow);
@@ -215,11 +215,11 @@ $(document).ready(function() {
 			  
 				if(check){
 					$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-						sum += chiTiet.donGia * chiTiet.soLuongNhanHang;
+						sum += chiTiet.sanPham.donGia * chiTiet.soLuongNhanHang;
 					});
 				} else {
 					$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-						sum += chiTiet.donGia * chiTiet.soLuongDat;
+						sum += chiTiet.sanPham.donGia * chiTiet.soLuongDat;
 					});
 				}	  
 				
@@ -237,7 +237,7 @@ $(document).ready(function() {
 			 if(donHang.trangThaiDonHang == "Đang chờ giao" || donHang.trangThaiDonHang == "Đang giao"){
 		    	 donHangRow += ' &nbsp;<button class="btn btn-danger btnPhanCong">Phân công</button>';
 		     } else if (donHang.trangThaiDonHang == "Chờ duyệt"){
-		         donHangRow += ' &nbsp;<button class="btn btn-warning btnCapNhat" >Cập Nhật</button> </td>';
+donHangRow += ' &nbsp;<button class="btn btn-warning btnCapNhat" >Cập Nhật</button> </td>';
 		     }
             
              $('.donHangTable tbody').append(donHangRow);
@@ -265,7 +265,7 @@ $(document).ready(function() {
 				var chiTietRow = '<tr>' +
 				'<td>' + stt + '</td>' +
                 '<td>' + chiTiet.sanPham.tenSanPham + '</td>' +
-                '<td>' + chiTiet.donGia + '</td>'+
+                '<td>' + chiTiet.sanPham.donGia + '</td>'+
                 '<td>' + chiTiet.soLuongDat + '</td>'+
                 '<td>' + chiTiet.soLuongNhanHang + '</td>'+
                 '<td><input type="hidden" value="'+chiTiet.id+'" ></td>'
@@ -274,7 +274,7 @@ $(document).ready(function() {
 	    	  });		
 			var sum = 0;
 			$.each(donHang.danhSachChiTiet, function(i, chiTiet){
-				sum += chiTiet.donGia * chiTiet.soLuongNhanHang;
+				sum += chiTiet.sanPham.donGia * chiTiet.soLuongNhanHang;
 			});
 			$("#tongTienXacNhan").text("Tổng : "+ sum);
 		});
@@ -328,7 +328,7 @@ $(document).ready(function() {
 			},
 			error : function(e) {
 				alert("Error!")
-				console.log("ERROR: ", e);
+console.log("ERROR: ", e);
 			}
 		}); 
     }	
