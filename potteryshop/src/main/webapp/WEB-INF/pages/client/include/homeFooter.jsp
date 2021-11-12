@@ -6,17 +6,16 @@
 		<div class="section group">
 			<div class="col_1_of_4 span_1_of_4">
 				<b style="color: #ff7272">THÔNG TIN CHUNG</b>
-				<p>Mang đến sự lựa chọn tốt nhất cho khách hàng</p>
-				<p>Gốm tinh hoa phụng sự mọi nhà</p>
+				<p>Giới thiệu về cửa hàng</p>
+				<p>Cách lựa chọn gốm chất lượng</p>
 			</div>
 			<div class="col_1_of_4 span_1_of_4" style="list-style: inside;">
 				<b style="color: #ff7272">HỖ TRỢ KHÁCH HÀNG</b>
 				<ul class="uk-list uk-list-bullet">
-					<li><a rel="nofollow" href="#">Câu hỏi thường gặp</a></li>
-					<br>
-					<li><a rel="nofollow" href="#">Gửi yêu cầu hỗ
-							trợ</a></li>
-							<br>
+					
+					
+					<li><a rel="nofollow" href="#">Gửi yêu cầu hỗ trợ</a></li>
+							
 					<li><a rel="nofollow" href="#">Hình
 							thức thanh toán</a></li>
 					<li><a rel="nofollow" href="#">Chính

@@ -20,9 +20,9 @@
 
 <body>
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: 	#25383C;border-color: rgb(0 0 0 / 25%)">
     <div class="container">
-      <div class="navbar-header">
+      <div class="navbar-header"  >
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>

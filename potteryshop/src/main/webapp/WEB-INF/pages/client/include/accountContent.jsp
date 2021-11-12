@@ -72,12 +72,15 @@
 							<td><c:forEach var="chiTiet"
 									items="${donHang.danhSachChiTiet}">
 									<p>
-										<a href='<c:url value="/sp?id=${chiTiet.sanPham.id}" />'>${chiTiet.sanPham.tenSanPham}</a><br>
+										<a href='<c:url value="/sp?id=${chiTiet.sanPham.id}" />'>${chiTiet.sanPham.tenSanPham} </a>
+										<br>
 									</p>
-
+									
+									<p>Đơn giá: ${chiTiet.sanPham.donGia} VND  </p>
+									
 									<c:choose>
 										<c:when 
-											test='${(donHang.trangThaiDonHang == "Đang chờ giao") || (donHang.trangThaiDonHang =="Đang giao")  }'>
+											test='${(donHang.trangThaiDonHang == "Đang chờ giao") || (donHang.trangThaiDonHang =="Đang giao")|| (donHang.trangThaiDonHang == "Đã bị hủy")  }'>
 
 											<p>Số lượng: ${chiTiet.soLuongDat }</p>
 											<hr>

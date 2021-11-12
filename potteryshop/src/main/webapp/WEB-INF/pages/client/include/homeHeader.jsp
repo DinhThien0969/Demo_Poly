@@ -7,8 +7,10 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <link href="Frontend/css/style.css" rel="stylesheet" type="text/css"
 	media="all" />
@@ -28,17 +30,15 @@
 
 
 <script>
-		   
-			    $(function () {
+	$(function() {
 
-			      // Slideshow 1
-			      $("#slider1").responsiveSlides({
-			        maxwidth: 1600,
-			        speed: 600
-			      });
-			});
-		   
-		  </script>
+		// Slideshow 1
+		$("#slider1").responsiveSlides({
+			maxwidth : 1600,
+			speed : 600
+		});
+	});
+</script>
 
 </head>
 <body>
@@ -53,23 +53,29 @@
 					src="Frontend/img/logo6.png" title="logoshop" /></a>
 			</div>
 			<!----end-logo---->
-				<div class="search-bar">
+			<div class="search-bar">
 				<form action="/potteryshop/search">
 					<input type="text" name="name"><input type="submit"
 						value="Search" />
 				</form>
-			       </div>
+			</div>
 			<div class="clear"></div>
 
 			<div class="header-top-nav ">
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 
 					<ul>
-					<li></li>
+						<li></li>
 						<li>Xin chào: ${loggedInUser.hoTen}</li>
+						
+    <%--   <c:choose>
+         <c:when test = "${pageContext.request.userPrincipal.name == 1}">
+            
+         </c:when>
+      </c:choose> --%>
+      <li><a href="<%=request.getContextPath()%>/admin">Trang admin</a></li>
 
-
-						 	<%-- <li><a href="<%=request.getContextPath()%>/checkout"">Thanh toán</a></li>  --%>
+						<%-- <li><a href="<%=request.getContextPath()%>/checkout"">Thanh toán</a></li>  --%>
 						<li><a href="<%=request.getContextPath()%>/account">Tài
 								khoản</a></li>
 						<li><a href="<%=request.getContextPath()%>/cart"><span>Giỏ
@@ -86,12 +92,13 @@
 								kí</a></li>
 						<li><a href="<%=request.getContextPath()%>/login">Đăng
 								nhập</a></li>
-						<li><a href="<%=request.getContextPath()%>/cart"> <span>Giỏ hàng&nbsp;&nbsp;&nbsp;</span></a><span
+						<li><a href="<%=request.getContextPath()%>/cart"> <span>Giỏ
+									hàng&nbsp;&nbsp;&nbsp;</span></a><span
 							class="glyphicon glyphicon-shopping-cart"></span></li>
 
 					</ul>
 				</c:if>
-				
+
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -99,22 +106,25 @@
 	<div class="clear"></div>
 	<div class="top-header">
 		<div class="wrap">
-			
+
 			<!----start-top-nav---->
 			<div class="top-nav">
 				<ul>
 					<li><a href="<%=request.getContextPath()%>/">Trang chủ</a></li>
 
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cửa hàng <span class="caret"></span></a>
-						<ul class="dropdown-menu" style="background: #286090" id="danhmuc2">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Cửa hàng <span class="caret"></span></a>
+						<ul class="dropdown-menu" style="background: #286090"
+							id="danhmuc2">
 						</ul></li>
-					<li><a href="<%=request.getContextPath()%>/shipping">Vận chuyển</a></li>
-					<li><a href="<%=request.getContextPath()%>/guarantee">Chính sách đổi trả hàng</a></li>
+					<li><a href="<%=request.getContextPath()%>/shipping">Vận
+							chuyển</a></li>
+					<li><a href="<%=request.getContextPath()%>/guarantee">Chính
+							sách đổi trả hàng</a></li>
 
-					<li><a href="<%=request.getContextPath()%>/contact">Liên hệ</a></li>
-					<li>
-				
-			       </li>
+					<li><a href="<%=request.getContextPath()%>/contact">Liên
+							hệ</a></li>
+					<li></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -122,5 +132,5 @@
 	</div>
 	<!----End-top-nav---->
 	<!----End-Header---->
-	
-	<script src="<c:url value='/js/client/header.js'/>" ></script>
+
+	<script src="<c:url value='/js/client/header.js'/>"></script>
