@@ -44,6 +44,22 @@ img{max-width:100%;}
      text-align: center; 
     vertical-align: middle;
 }
+#dong_ho #thoi_gian{
+     display:flex;
+ }
+#dong_ho #thoi_gian div{
+     position: relative;
+     margin: 0 5px;
+ }
+ #dong_ho #thoi_gian div span{
+  
+     color: #fff;
+    float:right;
+     display:flex;
+     justify-content: center;
+     align-items: center;
+     
+ }
 
 
 

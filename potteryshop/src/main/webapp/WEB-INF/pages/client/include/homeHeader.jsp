@@ -38,6 +38,19 @@
 			speed : 600
 		});
 	});
+	function Dong_ho() {
+        var gio = document.getElementById("gio");
+        var phut = document.getElementById("phut");
+        var giay = document.getElementById("giay");
+        var Gio_hien_tai = new Date().getHours();
+        var Phut_hien_tai = new Date().getMinutes();
+        var Giay_hien_tai = new Date().getSeconds();
+        gio.innerHTML = Gio_hien_tai;
+        phut.innerHTML = Phut_hien_tai;
+        giay.innerHTML = Giay_hien_tai;
+    }
+   var Dem_gio = setInterval(Dong_ho, 1000);
+
 </script>
 
 </head>
@@ -124,7 +137,23 @@
 
 					<li><a href="<%=request.getContextPath()%>/contact">Liên
 							hệ</a></li>
-					<li></li>
+					<li>
+					<div id="dong_ho">
+
+							<div id="thoi_gian" style="margin-left: 400px"class="glyphicon glyphicon-bell">
+								<div>
+									<span>:</span><span id="gio">00 </span>
+								</div>
+								<div>
+									 <span id="phut">00</span>
+								</div>
+								<div>
+									 <span id="giay">00</span>
+								</div>
+							</div>
+						</div>
+					
+					</li>
 				</ul>
 			</div>
 			<div class="clear"></div>
