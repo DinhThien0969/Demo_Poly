@@ -26,6 +26,7 @@
 		<form class="form-inline" id="searchForm" name="searchObject">
 
 			<select class="form-control" id="trangThai">
+			    <option value="Đang chờ xác nhận khách mua">Đang chờ xác nhận khách mua</option>
 				<option value="Đang chờ giao">Đang chờ giao</option>
 				<option value="Đang giao">Đang giao</option>
 				<option value="Chờ duyệt">Chờ duyệt</option>
@@ -243,8 +244,8 @@
 											<thead>
 												<tr>
 													<th class="border-0 text-uppercase small font-weight-bold">STT</th>
-													<th class="border-0 text-uppercase small font-weight-bold">Tên
-														sản phẩm</th>
+													<th class="border-0 text-uppercase small font-weight-bold">Tên 
+													    sản phẩm</th>
 													<th class="border-0 text-uppercase small font-weight-bold">Đơn
 														giá</th>
 													<th class="border-0 text-uppercase small font-weight-bold">Số
@@ -260,6 +261,7 @@
 									</div>
 
 									<div>
+									
 										<h5 id="ghiChu" style="font-weight: bold; padding-top: 10px">Ghi
 											chú</h5>
 										<textarea rows="3" cols="75" id="ghiChuAdmin"></textarea>

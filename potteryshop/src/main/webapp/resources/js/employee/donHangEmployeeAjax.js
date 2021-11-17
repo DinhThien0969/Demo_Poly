@@ -1,15 +1,17 @@
 $(document).ready(function() {
-	
+
 	// load first when coming page
-	ajaxGet(1);	
+		 	console.log(parseInt(document.getElementById("intro").innerHTML));
+	if(parseInt(document.getElementById("intro").innerHTML)==0){ajaxGet(1,"http://localhost:8080/potteryshop/api/employee/don-hang/listConfirmGuest" + '?page=1' );}
 	
-	function ajaxGet(page){		
+	 
+	function ajaxGet(page,url){		
 		var data = { trangThai : $('#trangThai').val(), tuNgay: $('#fromDate').val(), denNgay: $('#toDate').val(), idEmployee: $('#idEmployee').val()  } 
 		$.ajax({
 			type: "GET",		
 			data: data,
 			contentType : "application/json",
-			url: "http://localhost:8080/potteryshop/api/employee/don-hang/all" + '?page=' + page,
+			url: url,
 			success: function(result){
 				$.each(result.content, function(i, donHang){
 					// tính giá trị đơn hàng
@@ -34,12 +36,12 @@ $(document).ready(function() {
 					                  '<td width="0%">'+'<input type="hidden" class="donHangId" value=' + donHang.id + '>'+ '</td>'+
 					                  '<td><button class="btn btn-primary btnChiTiet" >Chi Tiết</button>';
 					     if(donHang.trangThaiDonHang == "Đang giao"){
-					    	 donHangRow += ' &nbsp;<button class="btn btn-warning btnCapNhat" >Cập Nhật</button> </td>';
+					    	 donHangRow += ' &nbsp;<button class="btn btn-warning btnCapNhat" >Khách nhận hàng chưa ??</button> </td>';
 					     }
-					    
-					                  
-					$('.donHangTable tbody').append(donHangRow);
-					
+					     if(donHang.trangThaiDonHang == "Đang chờ xác nhận khách mua"){
+					    	 donHangRow += ' &nbsp;<button class="btn btn-warning btnXacNhanKhachMua" >Xác nhận khách mua</button> </td>';
+					     }
+					$('.donHangTable tbody').append(donHangRow);					
 					$('td').each( function(i){
 						if ($(this).html() == 'null'){
 							$(this).html('');
@@ -80,7 +82,7 @@ $(document).ready(function() {
 		var page = $(this).text();	
     	$('.donHangTable tbody tr').remove();
     	$('.pagination li').remove();
-    	ajaxGet(page);	
+    	ajaxGet(page,"http://localhost:8080/potteryshop/api/employee/don-hang/all" + '?page=' + page);	
 	});
 	
     // event khi click vào nhấn phím vào ô tìm kiếm đơn hàng theo id
@@ -196,12 +198,40 @@ $(document).ready(function() {
 		e.preventDefault();
 		$("#chiTietForm p").text(""); // reset text thẻ p
 		$("#capNhatTrangThaiForm h4").text(""); // reset text thẻ p
+		
 		$('.chiTietTable tbody tr').remove();
     	$('.chiTietTable #soLuongNhanTag').remove();	
 		$('.chiTietCapNhatTable tbody tr').remove();
 	});
 	
-    // event khi click vào button cập nhật đơn
+   $('#chiTietModal,#xacNhanKhachMuaModal').on('hidden.bs.modal', function(e) {
+		e.preventDefault();
+		$("#chiTietForm p").text(""); // reset text thẻ p		
+		$("#xacNhanKhachMuaForm h4").text(""); // reset text thẻ p
+		$('.chiTietTable tbody tr').remove();
+    	$('.chiTietTable #soLuongNhanTag').remove();	
+		$('.chiTietCapNhatTable tbody tr').remove();
+	});
+	
+	//
+	$(document).on('change', '.soLuongNhan', function (event) {
+		  var table = $(".chiTietCapNhatTable tbody");
+		  sum  = 0;
+     	  table.find('tr').each(function (i) {
+		      donGia = $(this).find("td:eq(2)").text();
+              soLuongCapNhat = $(this).find("td:eq(4) input[type='number']").val();
+		      sum += donGia * soLuongCapNhat;
+		    });
+          $("#tongTienCapNhat").text("Tổng : "+ sum);
+
+	});	
+	
+    $(document).on('click', '#btnXacNhan', function (event) {
+    	event.preventDefault();
+    	ajaxPostCapNhatTrangThaiDon();
+		resetData();
+    });
+     // event khi click vào button cập nhật đơn
 	$(document).on('click', '.btnCapNhat', function (event){
 		event.preventDefault();
 		var donHangId = $(this).parent().prev().children().val();	
@@ -229,26 +259,6 @@ $(document).ready(function() {
 		});
 		$("#capNhatTrangThaiModal").modal();
 	});
-	
-	//
-	$(document).on('change', '.soLuongNhan', function (event) {
-		  var table = $(".chiTietCapNhatTable tbody");
-		  sum  = 0;
-     	  table.find('tr').each(function (i) {
-		      donGia = $(this).find("td:eq(2)").text();
-              soLuongCapNhat = $(this).find("td:eq(4) input[type='number']").val();
-		      sum += donGia * soLuongCapNhat;
-		    });
-          $("#tongTienCapNhat").text("Tổng : "+ sum);
-
-	});	
-	
-    $(document).on('click', '#btnXacNhan', function (event) {
-    	event.preventDefault();
-    	ajaxPostCapNhatTrangThaiDon();
-		resetData();
-    });
-    
 	// post request cập nhật trạng thái đơn employee
 	function ajaxPostCapNhatTrangThaiDon() { 
    	  
@@ -285,11 +295,101 @@ $(document).ready(function() {
 		}); 
     }	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 $(document).on('click', '#btnXacNhanKhachMua', function (event) {
+    	event.preventDefault();
+    	ajaxPostXacNhanKhach();
+		resetData();
+    });
+     // event khi click vào xác nhận khách
+	$(document).on('click', '.btnXacNhanKhachMua', function (event){
+		event.preventDefault();
+		var donHangId = $(this).parent().prev().children().val();	
+		$("#donHangId").val(donHangId);
+		var href = "http://localhost:8080/potteryshop/api/employee/don-hang/"+donHangId;
+		$.get(href, function(donHang) {
+			// thêm bảng:
+			var stt = 1;
+			$.each(donHang.danhSachChiTiet, function(i, chiTiet){
+				var chiTietRow = '<tr>' +
+				'<td>' + stt + '</td>' +
+                '<td>' + chiTiet.sanPham.tenSanPham + '</td>' +
+                '<td>' + chiTiet.sanPham.donGia + '</td>'+
+                '<td>' + chiTiet.soLuongDat + '</td>'+
+                '<td><input type="number" class="soLuongNhan" style="width: 40px; text-align: center;" value ="'+chiTiet.soLuongDat+'" min="0" max="'+chiTiet.soLuongDat+'" ></td>'+
+                '<td><input type="hidden" value="'+chiTiet.id+'" ></td>'
+				 $('.chiTietCapNhatTable tbody').append(chiTietRow);
+                stt++;
+	    	  });		
+			var sum = 0;
+			$.each(donHang.danhSachChiTiet, function(i, chiTiet){
+				sum += chiTiet.sanPham.donGia * chiTiet.soLuongDat;
+			});
+			$("#tongTienCapNhat").text("Tổng : "+ sum);
+		});
+		$("#xacNhanKhachMuaModal").modal();
+	});
+	// post request cập nhật trạng thái đơn employee
+	function ajaxPostXacNhanKhach() { 
+   	  
+   	     var listChiTietCapNhat = [] ;
+		 var table = $(".chiTietCapNhatTable tbody");
+     	 table.find('tr').each(function (i) {
+		      var chiTietCapNhat = { idChiTiet : $(this).find("td:eq(5) input[type='hidden']").val(),
+		    		                  soLuongNhanHang: $(this).find("td:eq(4) input[type='number']").val() };
+		      listChiTietCapNhat.push(chiTietCapNhat);
+		 });
+
+    	 
+    	 var data = { idDonHang : $("#donHangId").val(),
+    			      ghiChuEmployee: $("#ghiChuEmployee").val(), 
+    			      danhSachCapNhatChiTietDon: listChiTietCapNhat } ;
+//    	 console.log(data);
+    	 $.ajax({
+     		async:false,
+ 			type : "POST",
+ 			contentType : "application/json",
+ 			url : "http://localhost:8080/potteryshop/api/employee/don-hang/confirmGuest",
+ 			enctype: 'multipart/form-data',
+ 	        
+			data : JSON.stringify(data),
+            // dataType : 'json',
+			success : function(response) {
+				$("#xacNhanKhachMuaModal").modal('hide');
+				alert("Xác nhận khách mua thành công");
+			},
+			error : function(e) {
+				alert("Error!")
+				console.log("ERROR: ", e);
+			}
+		}); 
+    }	
+	
+	
+	
+	
+	
+	
+	
+	
+	
     // reset table after post, put, filter
     function resetData(){   	
     	var page = $('li.active').children().text();
     	$('.donHangTable tbody tr').remove();
     	$('.pagination li').remove();
-        ajaxGet(page);
-    };
+  
+        if((document.getElementById("trangThai").options[document.getElementById("trangThai").selectedIndex].text=="Đang chờ xác nhận khách mua")  && (parseInt(document.getElementById("intro").innerHTML)==0))
+        {ajaxGet(1,"http://localhost:8080/potteryshop/api/employee/don-hang/listConfirmGuest" + '?page=1' );}else{ajaxGet(page,"http://localhost:8080/potteryshop/api/employee/don-hang/all" + '?page=' + page);
+        }    };
 });

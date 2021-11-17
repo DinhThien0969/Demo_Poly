@@ -57,8 +57,10 @@ public class ClientController {
 
 	@ModelAttribute("loggedInUser")
 	public NguoiDung loggedInUser(boolean isBlocked) {
+		
 		if(!isBlocked) {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			
 			return nguoiDungService.findByEmail(auth.getName());
 		} else return null;
 	}

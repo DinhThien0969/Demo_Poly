@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,18 +41,17 @@
 		});
 	});
 	function Dong_ho() {
-        var gio = document.getElementById("gio");
-        var phut = document.getElementById("phut");
-        var giay = document.getElementById("giay");
-        var Gio_hien_tai = new Date().getHours();
-        var Phut_hien_tai = new Date().getMinutes();
-        var Giay_hien_tai = new Date().getSeconds();
-        gio.innerHTML = Gio_hien_tai;
-        phut.innerHTML = Phut_hien_tai;
-        giay.innerHTML = Giay_hien_tai;
-    }
-   var Dem_gio = setInterval(Dong_ho, 1000);
-
+		var gio = document.getElementById("gio");
+		var phut = document.getElementById("phut");
+		var giay = document.getElementById("giay");
+		var Gio_hien_tai = new Date().getHours();
+		var Phut_hien_tai = new Date().getMinutes();
+		var Giay_hien_tai = new Date().getSeconds();
+		gio.innerHTML = Gio_hien_tai;
+		phut.innerHTML = Phut_hien_tai;
+		giay.innerHTML = Giay_hien_tai;
+	}
+	var Dem_gio = setInterval(Dong_ho, 1000);
 </script>
 
 </head>
@@ -80,15 +81,14 @@
 					<ul>
 						<li></li>
 						<li>Xin chào: ${loggedInUser.hoTen}</li>
-						
-    <%--   <c:choose>
-         <c:when test = "${pageContext.request.userPrincipal.name == 1}">
-            
-         </c:when>
-      </c:choose> --%>
-      <li><a href="<%=request.getContextPath()%>/admin">Trang admin</a></li>
 
-						<%-- <li><a href="<%=request.getContextPath()%>/checkout"">Thanh toán</a></li>  --%>
+						<sec:authorize access="hasRole('ADMIN')">
+							<a href="<%=request.getContextPath()%>/admin">Trang admin</a>
+						</sec:authorize>
+						<sec:authorize access="hasRole('EMPLOYEE')">
+							<a href="<%=request.getContextPath()%>/employee">Trang
+								employee</a>
+						</sec:authorize>
 						<li><a href="<%=request.getContextPath()%>/account">Tài
 								khoản</a></li>
 						<li><a href="<%=request.getContextPath()%>/cart"><span>Giỏ
@@ -138,21 +138,22 @@
 					<li><a href="<%=request.getContextPath()%>/contact">Liên
 							hệ</a></li>
 					<li>
-					<div id="dong_ho">
+						<div id="dong_ho">
 
-							<div id="thoi_gian" style="margin-left: 400px"class="glyphicon glyphicon-bell">
+							<div id="thoi_gian" style="margin-left: 400px"
+								class="glyphicon glyphicon-bell">
 								<div>
 									<span>:</span><span id="gio">00 </span>
 								</div>
 								<div>
-									 <span id="phut">00</span>
+									<span id="phut">00</span>
 								</div>
 								<div>
-									 <span id="giay">00</span>
+									<span id="giay">00</span>
 								</div>
 							</div>
 						</div>
-					
+
 					</li>
 				</ul>
 			</div>

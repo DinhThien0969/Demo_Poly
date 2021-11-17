@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.potteryshop.entities.NguoiDung;
+import com.potteryshop.service.DonHangService;
 import com.potteryshop.service.NguoiDungService;
 
 @Controller
@@ -25,28 +26,25 @@ public class EmployeeController {
 	@Autowired
 	private NguoiDungService nguoiDungService;
 	
-
+	@Autowired
+	private DonHangService donHangService;
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser(boolean isBlocked) {
-		if(!isBlocked) {
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			return nguoiDungService.findByEmail(auth.getName());
-		} else return null;
+	public NguoiDung loggedInUser(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		NguoiDung user = nguoiDungService.findByEmail(auth.getName());
+		return user;
 	}
 	
-	@GetMapping(value= {"", "/don-hang","/*"})
+	
+	@GetMapping(value= {"", "/don-hang"})
 	public String employeePage(Model model) {
-		System.out.println(loggedInUser(false));
-		
-		if(loggedInUser(false)!=null && loggedInUser(false).getIsBlocked()) {
-			
-			return "client/blockedPage";
-		}
-		else {
-			return "employee/quanLyDonHang";
-		}
-		
-		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		NguoiDung user = nguoiDungService.findByEmail(auth.getName());
+		user.setListDonHang(donHangService.findByTrangThaiDonHangAndEmployee("Đang giao", user));
+		model.addAttribute("employee", user);
+
+		return "employee/quanLyDonHang";
 	}
 	
 	@GetMapping("/profile")
