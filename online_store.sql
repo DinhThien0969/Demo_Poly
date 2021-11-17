@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 11, 2021 lúc 05:40 AM
+-- Thời gian đã tạo: Th10 17, 2021 lúc 02:43 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
@@ -39,7 +39,7 @@ CREATE TABLE `chi_muc_gio_hang` (
 --
 
 INSERT INTO `chi_muc_gio_hang` (`id`, `so_luong`, `ma_gio_hang`, `ma_san_pham`) VALUES
-(62, 2, 1, 30);
+(68, 1, 2, 35);
 
 -- --------------------------------------------------------
 
@@ -110,10 +110,23 @@ INSERT INTO `chi_tiet_don_hang` (`id`, `don_gia`, `so_luong`, `ma_don_hang`, `ma
 (46, 9000000, 1, 17, 34, 1, 0),
 (47, 900000, 1, 18, 35, 1, 0),
 (48, 2000000, 1, 19, 30, 1, 0),
-(49, 9000000, 1, 20, 34, 1, 0),
+(49, 9000000, 1, 20, 34, 1, 1),
 (50, 4800000, 1, 21, 24, 1, 1),
 (51, 6000000, 1, 22, 29, 1, 0),
-(52, 6000000, 1, 22, 29, 1, 0);
+(52, 6000000, 1, 22, 29, 1, 0),
+(53, 9000000, 1, 23, 34, 1, 1),
+(54, 900000, 1, 23, 35, 1, 1),
+(55, 1250000, 1, 23, 31, 1, 1),
+(56, 2500000, 1, 24, 31, 2, 2),
+(57, 9000000, 1, 24, 34, 1, 1),
+(58, 2000000, 1, 25, 30, 1, 0),
+(59, 18000000, 1, 25, 34, 2, 0),
+(60, 90000000, 1, 26, 34, 10, 0),
+(61, 3600000, 1, 26, 35, 4, 0),
+(62, 3600000, 1, 26, 35, 4, 0),
+(63, 27000000, 1, 26, 34, 3, 0),
+(64, 1350000, 1, 27, 33, 1, 0),
+(65, 9000000, 1, 27, 34, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -182,13 +195,18 @@ INSERT INTO `don_hang` (`id`, `dia_chi_nhan`, `ghi_chu`, `ho_ten_nguoi_nhan`, `n
 (13, 'dat', 'Ghi chú employee: \nda nhan', 'hoang', '2021-11-10 12:40:14', '2021-11-10 12:42:01', '2021-11-10 12:42:39', '0989987795', 'Hoàn thành', 1, NULL, 8900000, 16),
 (14, 'hh', 'Ghi chú employee: \nda nhan', 'tu', '2021-11-10 12:41:23', '2021-11-10 12:42:04', '2021-11-10 12:42:44', '9337372777272', 'Hoàn thành', 1, NULL, 11700000, 16),
 (15, 'ffs', NULL, 'hoang', '2021-11-10 12:49:39', '2021-11-10 12:55:58', NULL, '5435435435', 'Đang giao', 1, NULL, 11700000, 16),
-(16, 'fsgsgsg', NULL, 'dat', '2021-11-10 12:56:50', NULL, NULL, '0989987795', 'Đang chờ giao', 1, NULL, 18000000, NULL),
-(17, 'sdsf', NULL, 'dat', '2021-11-11 10:24:54', NULL, NULL, '123456', 'Đang chờ giao', 1, NULL, 40500000, NULL),
+(16, 'fsgsgsg', NULL, 'dat', '2021-11-10 12:56:50', NULL, NULL, '0989987795', 'Đã bị hủy', 1, NULL, 18000000, NULL),
+(17, 'sdsf', NULL, 'dat', '2021-11-11 10:24:54', NULL, NULL, '123456', 'Đã bị hủy', 1, NULL, 40500000, NULL),
 (18, 'dat', NULL, 'dat', '2021-11-11 10:26:07', NULL, NULL, '33434324324', 'Đang chờ giao', 1, NULL, 900000, NULL),
 (19, 'hhhhhh', NULL, 'Trần Hữu Hoàng', '2021-11-11 10:27:53', NULL, NULL, '33434324324', 'Đang chờ giao', 1, NULL, 2000000, NULL),
-(20, 'kkkkk', NULL, 'tú', '2021-11-11 10:28:17', '2021-11-11 10:28:38', NULL, '123456', 'Đang giao', 1, NULL, 9000000, 16),
+(20, 'kkkkk', 'Ghi chú employee: \nthành công<br> Ghi chú admin:\nok', 'tú', '2021-11-11 10:28:17', '2021-11-11 10:28:38', '2021-11-11 23:43:10', '123456', 'Hoàn thành', 1, NULL, 9000000, 16),
 (21, 'oh', 'Ghi chú employee: \nok<br> Ghi chú admin:\nik', 'Trần Hữu Hoàng', '2021-11-11 10:39:43', '2021-11-11 10:40:08', '2021-11-11 10:40:27', '33434324324', 'Hoàn thành', 1, NULL, 4800000, 16),
-(22, 'dat', NULL, 'mon', '2021-11-11 10:42:55', NULL, NULL, '33434324324', 'Đã bị hủy', 1, NULL, 12000000, NULL);
+(22, 'dat', NULL, 'mon', '2021-11-11 10:42:55', NULL, NULL, '33434324324', 'Đã bị hủy', 1, NULL, 12000000, NULL),
+(23, 'hab', 'Ghi chú employee: \nthành công<br> Ghi chú admin:\nHoàn thanh đơn hàng', 'hà', '2021-11-11 23:16:52', '2021-11-11 23:17:14', '2021-11-11 23:18:20', '124243434234', 'Hoàn thành', 1, NULL, 11150000, 16),
+(24, 'hà nội', 'Ghi chú employee: \nthành công<br> Ghi chú admin:\nHoàn tất', 'hoang', '2021-11-11 23:31:56', '2021-11-11 23:37:27', '2021-11-11 23:38:24', '0989987795', 'Hoàn thành', 1, NULL, 11500000, 16),
+(25, 'vinh phuc', NULL, 'hà', '2021-11-11 23:44:17', NULL, NULL, '1235555555', 'Đang chờ giao', 1, NULL, 20000000, NULL),
+(26, 'hà nội', NULL, 'hà', '2021-11-12 11:20:11', '2021-11-12 11:21:15', NULL, '5435435435', 'Đang giao', 1, NULL, 124200000, 16),
+(27, 'hà nội', NULL, 'hoang', '2021-11-16 09:18:55', NULL, NULL, '0989987795', 'Đang chờ giao', 1, NULL, 10350000, NULL);
 
 -- --------------------------------------------------------
 
@@ -207,7 +225,8 @@ CREATE TABLE `gio_hang` (
 --
 
 INSERT INTO `gio_hang` (`id`, `tong_tien`, `ma_nguoi_dung`) VALUES
-(1, NULL, 1);
+(1, NULL, 1),
+(2, NULL, 18);
 
 -- --------------------------------------------------------
 
@@ -272,7 +291,8 @@ INSERT INTO `nguoidung_vaitro` (`ma_nguoi_dung`, `ma_vai_tro`) VALUES
 (1, 1),
 (2, 2),
 (16, 7),
-(17, 7);
+(17, 1),
+(18, 1);
 
 -- --------------------------------------------------------
 
@@ -286,18 +306,20 @@ CREATE TABLE `nguoi_dung` (
   `email` varchar(255) DEFAULT NULL,
   `ho_ten` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `so_dien_thoai` varchar(255) DEFAULT NULL
+  `so_dien_thoai` varchar(255) DEFAULT NULL,
+  `is_blocked` bit(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `nguoi_dung`
 --
 
-INSERT INTO `nguoi_dung` (`id`, `dia_chi`, `email`, `ho_ten`, `password`, `so_dien_thoai`) VALUES
-(1, 'Đức Bác - Sông Lô - Vĩnh Phúc', 'admin@gmail.com', 'Trần Mạnh Đạt', '$2a$10$/VFMNUPBKNVRMjxPFCYKZ.lKahoLQda0EaAxdqoun1w3DqwNLa2me', '0989987795'),
-(2, NULL, 'member@gmail.com', NULL, '$2a$10$j7Upgupou72GBmukz0G6pOATk3wlCAgaoFCEqAhSvLToD/V/1wlpu', '0979130071'),
-(16, 'campuchia', 'Caodinhvanvo@gmail.com', 'Cao Đình Văn Vở', '$2a$10$KXYchFszWs/koiWnw8kk8u4ZoiI2coKkzXRmCN2nXDSy2X3FfMo/6', '0911085131'),
-(17, NULL, 'employee@gmail.com', NULL, '$2a$10$o16Fi7RcT3en6DZvvUT4nuO0E0sgdCIhIiaQS69LnOMSg9dXDKOZW', NULL);
+INSERT INTO `nguoi_dung` (`id`, `dia_chi`, `email`, `ho_ten`, `password`, `so_dien_thoai`, `is_blocked`) VALUES
+(1, 'Đức Bác - Sông Lô - Vĩnh Phúc', 'admin@gmail.com', 'Trần Mạnh Đạt', '$2a$10$/VFMNUPBKNVRMjxPFCYKZ.lKahoLQda0EaAxdqoun1w3DqwNLa2me', '0989987795', b'0'),
+(2, NULL, 'member@gmail.com', NULL, '$2a$10$j7Upgupou72GBmukz0G6pOATk3wlCAgaoFCEqAhSvLToD/V/1wlpu', '0979130071', b'0'),
+(16, 'campuchia', 'Caodinhvanvo@gmail.com', 'Cao Đình Văn Vở', '$2a$10$KXYchFszWs/koiWnw8kk8u4ZoiI2coKkzXRmCN2nXDSy2X3FfMo/6', '0911085131', b'0'),
+(17, NULL, 'employee@gmail.com', NULL, '$2a$10$o16Fi7RcT3en6DZvvUT4nuO0E0sgdCIhIiaQS69LnOMSg9dXDKOZW', NULL, b'0'),
+(18, 'hà nội', 'ngacanh09@gmail.com', 'Đạt', '$2a$10$f0oW2FqU6cdv/Recta3KleLPtlgOklC5jK621PPcyIbh4KPWfbskq', '0989987776', b'0');
 
 -- --------------------------------------------------------
 
@@ -354,11 +376,11 @@ INSERT INTO `san_pham` (`id`, `ma_danh_muc`, `ma_hang_sx`, `ten_san_pham`, `thon
 (28, 7, 2, 'TƯỢNG TAM ĐA CAO 100 CM – HÀNG KỸ', 'Ba ông Phúc, Lộc,Thọ đã nhắn nhủ người đời rằng hạnh phúc ở đời suy cho cùng cũng chỉ là tương đối thôi. Không điều gì mãn nguyện tròn đầy và bền vững cả.Ngày Xuân xin chúc mọi người chúng ta hưởng Phúc–Lộc–Thọ với tất cả minh triết của “Tam đa”', 15800000, 99, 'Tượng Phúc Lộc Thọ, Tam đa', 'Men rạn cổ', 'Sứ cao cấp ', 'Cao 100 cm', '12 tháng'),
 (29, 7, 2, 'TƯỢNG NGHÊ GỐM SỨ BÁT TRÀNG CAO 35 CM', 'Tượng nghê gốm sứ Bát Tràng cao 35 cm\r\n\r\n', 6000000, 99, 'Nghê sứ', 'Men xanh ngọc', 'Sứ cao cấp ', 'Cao 35 cm', '12 tháng'),
 (30, 7, 2, 'TƯỢNG PHÚC LỘC THỌ TỨ LINH – CAO 86CM', 'Tượng phúc lộc thọ tứ linh – cao 86cm', 2000000, 96, 'Tượng Phúc Lộc Thọ, Tam đa', 'Men rạn cổ', 'Sứ cao cấp ', 'Cao 86 cm', '12 tháng'),
-(31, 7, 2, 'TƯỢNG KHỔNG MINH MEN RẠN CAO 40 CM', 'Khổng minh Gia Cát lượng là một vị quân sư nổi tiếng dưới trướng phù trợ cho Lưu Bị. Ông là một vị quân sư được coi là tài giỏi nhất trong lịch sử trung quốc, với tài thao binh khiển tướng và dùng kế sách giúp Nhà Hán tranh giành thiên hạ', 1250000, 98, 'Khổng Minh, Gia Cát Lượng', 'Men rạn', 'Sứ cao cấp ', 'Cao 40 cm', '12 tháng'),
+(31, 7, 2, 'TƯỢNG KHỔNG MINH MEN RẠN CAO 40 CM', 'Khổng minh Gia Cát lượng là một vị quân sư nổi tiếng dưới trướng phù trợ cho Lưu Bị. Ông là một vị quân sư được coi là tài giỏi nhất trong lịch sử trung quốc, với tài thao binh khiển tướng và dùng kế sách giúp Nhà Hán tranh giành thiên hạ', 1250000, 95, 'Khổng Minh, Gia Cát Lượng', 'Men rạn', 'Sứ cao cấp ', 'Cao 40 cm', '12 tháng'),
 (32, 8, 2, 'ĐĨA SỨ VẼ CẢNH TRẺ THƠ VUI ĐÙA PHI 30 CM', 'Đĩa sứ vẽ cảnh trẻ thơ vui đùa phi 30', 900000, 96, 'Vẽ cảnh trẻ thơ vui đùa', 'Men lam', 'Sứ cao cấp', 'Phi 30', '12 tháng'),
 (33, 8, 2, 'ĐĨA CẢNH TÙNG LỘC MEN LAM PHI 35 CM', 'Đĩa cảnh Tùng Lộc men Lam phi 35 cm mang nhiều giá trị nghệ thuật và ý nghĩa phong thủy. Người ta trưng bày đĩa cảnh Tùng lộc trong nhà sẽ đem lại nhiều may mắn tài lộc.', 1350000, 93, 'Tùng Lộc', 'Men Lam', 'Sứ cao cấp ', 'Đường kính 35 cm', '12 tháng'),
-(34, 8, 2, 'ĐĨA CẢNH SỨ MÃ ĐÁO THÀNH CÔNG PHI 35 CM', 'Đĩa cảnh sứ mã đáo mang nhiều ý nghĩa về thành công trong kinh doanh, thắng lợi trong chiến trận với hình ảnh mã đáo là ngựa quay về. Đĩa cảnh mã đáo thành công là tranh vẽ về một bầy ngựa thường gồm tám con ngựa đang phi nước đại tiến về một hướng', 9000000, 25, 'Mã đáo thành công', 'Men giả cổ', 'Sứ cao cấp ', 'Đường kính 35 cm', '12 tháng'),
-(35, 8, 2, 'ĐĨA SỨ VẼ KIM KÊ ĐỘC LẬP GIẢ CỔ 35 CM', 'Đĩa sứ vẽ Kim kê độc lập giả cổ  rất nhiều giá trị nghệ thuật và ý nghĩa phong thủy. Gà là một trong 12 con giáp, là một dấu tích của nền văn minh và văn hóa nông nghiệp ', 900000, 94, 'Kim kê độc lập', 'Men rạn cổ', 'Sứ cao cấp ', 'Đường kính 35cm', '12 tháng');
+(34, 8, 2, 'ĐĨA CẢNH SỨ MÃ ĐÁO THÀNH CÔNG PHI 35 CM', 'Đĩa cảnh sứ mã đáo mang nhiều ý nghĩa về thành công trong kinh doanh, thắng lợi trong chiến trận với hình ảnh mã đáo là ngựa quay về. Đĩa cảnh mã đáo thành công là tranh vẽ về một bầy ngựa thường gồm tám con ngựa đang phi nước đại tiến về một hướng', 9000000, 22, 'Mã đáo thành công', 'Men giả cổ', 'Sứ cao cấp ', 'Đường kính 35 cm', '12 tháng'),
+(35, 8, 2, 'ĐĨA SỨ VẼ KIM KÊ ĐỘC LẬP GIẢ CỔ 35 CM', 'Đĩa sứ vẽ Kim kê độc lập giả cổ  rất nhiều giá trị nghệ thuật và ý nghĩa phong thủy. Gà là một trong 12 con giáp, là một dấu tích của nền văn minh và văn hóa nông nghiệp ', 900000, 93, 'Kim kê độc lập', 'Men rạn cổ', 'Sứ cao cấp ', 'Đường kính 35cm', '12 tháng');
 
 -- --------------------------------------------------------
 
@@ -470,13 +492,13 @@ ALTER TABLE `vai_tro`
 -- AUTO_INCREMENT cho bảng `chi_muc_gio_hang`
 --
 ALTER TABLE `chi_muc_gio_hang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT cho bảng `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT cho bảng `danh_muc`
@@ -488,13 +510,13 @@ ALTER TABLE `danh_muc`
 -- AUTO_INCREMENT cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `gio_hang`
 --
 ALTER TABLE `gio_hang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `hang_san_xuat`
@@ -512,13 +534,13 @@ ALTER TABLE `lien_he`
 -- AUTO_INCREMENT cho bảng `nguoi_dung`
 --
 ALTER TABLE `nguoi_dung`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `vai_tro`

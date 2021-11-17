@@ -31,6 +31,16 @@ public class NguoiDung {
 	private String hoTen;
 	private String soDienThoai;
 	private String diaChi;
+	private Boolean isBlocked = false;
+
+	public Boolean getIsBlocked() {
+		return isBlocked;
+	}
+
+	public void setIsBlocked(Boolean isBlocked) {
+		this.isBlocked = isBlocked;
+	}
+	
 	
 	@ManyToMany
 	@JoinTable(name="nguoidung_vaitro",

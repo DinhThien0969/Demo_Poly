@@ -56,9 +56,11 @@ public class ClientController {
 	private LienHeService lienHeService;
 
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		return nguoiDungService.findByEmail(auth.getName());
+	public NguoiDung loggedInUser(boolean isBlocked) {
+		if(!isBlocked) {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			return nguoiDungService.findByEmail(auth.getName());
+		} else return null;
 	}
 	
 	@ModelAttribute("listDanhMuc")
@@ -72,7 +74,15 @@ public class ClientController {
 
 	@GetMapping
 	public String clientPage(Model model) {
-		return "client/home";
+		System.out.println(loggedInUser(false));
+		
+		if(loggedInUser(false)!=null && loggedInUser(false).getIsBlocked()) {
+			
+			return "client/blockedPage";
+		}
+		else {
+			return "client/home";
+		}
 	}
 
 	@GetMapping("/login")

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,9 +28,9 @@ import com.potteryshop.dto.TaiKhoanDTO;
 import com.potteryshop.entities.NguoiDung;
 import com.potteryshop.entities.ResponseObject;
 import com.potteryshop.entities.VaiTro;
+import com.potteryshop.repository.VaiTroRepository;
 import com.potteryshop.service.NguoiDungService;
 import com.potteryshop.service.VaiTroService;
-import com.potteryshop.validator.NguoiDungValidator;
 
 @RestController
 @RequestMapping("/api/tai-khoan")
@@ -88,5 +89,27 @@ public class TaiKhoanApi {
 		}
 		
 		errors = null;
+	}
+	
+	
+
+	@PutMapping("/switchStatus/{id}")
+	public NguoiDung switchStatus(@PathVariable long id) {
+		NguoiDung user = nguoiDungService.findById(id);
+			System.out.println(user);
+			user.setIsBlocked(!user.getIsBlocked());
+			nguoiDungService.switchStatus(user);
+			System.out.println(user.getIsBlocked());
+			
+		return user;
+	}
+	
+	@Autowired
+	VaiTroRepository vaitroRepo;
+	
+	@PutMapping("/upRoleToAdmin/{id}")
+	public VaiTro upRoleToAdmin(@PathVariable long id) {
+		vaitroRepo.updateRoleToAdminByEmployeeId((long)id);
+		return null;
 	}
 }

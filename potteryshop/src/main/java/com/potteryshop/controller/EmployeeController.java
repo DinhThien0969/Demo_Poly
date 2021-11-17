@@ -27,15 +27,26 @@ public class EmployeeController {
 	
 
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		return nguoiDungService.findByEmail(auth.getName());
+	public NguoiDung loggedInUser(boolean isBlocked) {
+		if(!isBlocked) {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			return nguoiDungService.findByEmail(auth.getName());
+		} else return null;
 	}
 	
-	
-	@GetMapping(value= {"", "/don-hang"})
+	@GetMapping(value= {"", "/don-hang","/*"})
 	public String employeePage(Model model) {
-		return "employee/quanLyDonHang";
+		System.out.println(loggedInUser(false));
+		
+		if(loggedInUser(false)!=null && loggedInUser(false).getIsBlocked()) {
+			
+			return "client/blockedPage";
+		}
+		else {
+			return "employee/quanLyDonHang";
+		}
+		
+		
 	}
 	
 	@GetMapping("/profile")
