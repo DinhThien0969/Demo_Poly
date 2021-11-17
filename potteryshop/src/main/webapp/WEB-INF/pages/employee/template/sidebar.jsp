@@ -29,6 +29,14 @@
             <a href="<c:url value='/employee/profile' />">
               <span class="glyphicon glyphicon-user">&nbsp;</span>Thông tin cá nhân</a>
           </li>
+          <li class="side-bar">
+            <a href="<c:url value='/employee/san-pham' />">
+              <span class="glyphicon glyphicon-user">&nbsp;</span>Quản lí sản phẩm</a>
+          </li>
+          <li class="side-bar">
+            <a href="<c:url value='/employee/danh-muc' />">
+              <span class="glyphicon glyphicon-user">&nbsp;</span>Quản lí danh mục </a>
+          </li>
 
         </ul>
       </div>
