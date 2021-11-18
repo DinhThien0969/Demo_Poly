@@ -81,14 +81,15 @@
 					<ul>
 						<li></li>
 						<li>Xin chào: ${loggedInUser.hoTen}</li>
-
+                        <li >
 						<sec:authorize access="hasRole('ADMIN')">
-							<a href="<%=request.getContextPath()%>/admin">Trang admin</a>
+							<a href="<%=request.getContextPath()%>/admin" style="color: red;font-size: 15px" >Trang admin</a>
 						</sec:authorize>
 						<sec:authorize access="hasRole('EMPLOYEE')">
-							<a href="<%=request.getContextPath()%>/employee">Trang
+							<a href="<%=request.getContextPath()%>/employee" style="color: red;font-size: 15px" >Trang
 								employee</a>
 						</sec:authorize>
+						</li>
 						<li><a href="<%=request.getContextPath()%>/account">Tài
 								khoản</a></li>
 						<li><a href="<%=request.getContextPath()%>/cart"><span>Giỏ
@@ -138,15 +139,15 @@
 					<li><a href="<%=request.getContextPath()%>/contact">Liên
 							hệ</a></li>
 					<li>
-						<div id="dong_ho">
+						<div id="dong_ho" style="margin-left: 400px">
 
-							<div id="thoi_gian" style="margin-left: 400px"
+							<div id="thoi_gian" 
 								class="glyphicon glyphicon-bell">
 								<div>
 									<span>:</span><span id="gio">00 </span>
 								</div>
 								<div>
-									<span id="phut">00</span>
+									<span>:</span><span id="phut">00</span>
 								</div>
 								<div>
 									<span id="giay">00</span>
