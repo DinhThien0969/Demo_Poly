@@ -121,7 +121,7 @@ public class CheckOutController {
 	public String thankyouPage(@ModelAttribute("donhang") DonHang donhang, HttpServletRequest req,
 			HttpServletResponse response, Model model) {
 		donhang.setNgayDatHang(new Date());
-		donhang.setTrangThaiDonHang("Đang chờ giao");
+		donhang.setTrangThaiDonHang("Đang chờ xác nhận khách mua");
 
 		NguoiDung currentUser = getSessionUser(req);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

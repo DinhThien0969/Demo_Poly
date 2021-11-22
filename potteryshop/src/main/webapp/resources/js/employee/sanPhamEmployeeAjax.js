@@ -26,7 +26,7 @@ $(document).ready(function() {
 					
 					var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("Laptop".toLowerCase());
 					sanPhamRow += ( checkTenDanhMuc != -1)?'<button class="btn btn-primary btnCapNhatLapTop" >Cập nhật</button>':'<button class="btn btn-primary btnCapNhatOther" >Cập nhật</button>';
-					
+					;
 					$('.sanPhamTable tbody').append(sanPhamRow);
 				});
 								

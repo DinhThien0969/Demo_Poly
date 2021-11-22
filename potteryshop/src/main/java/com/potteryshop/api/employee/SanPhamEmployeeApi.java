@@ -34,7 +34,7 @@ import com.potteryshop.service.SanPhamService;
 import com.potteryshop.validator.SanPhamDtoValidator;
 
 @RestController
-@RequestMapping("/api/employee/san-pham")
+@RequestMapping("api/employee/san-pham")
 public class SanPhamEmployeeApi {
 
 	@Autowired

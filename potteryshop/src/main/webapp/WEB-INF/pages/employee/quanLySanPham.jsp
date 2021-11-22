@@ -369,7 +369,6 @@
 	<jsp:include page="template/footer.jsp"></jsp:include>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.js"></script>
-	
-	<script src="<c:url value='/js/employee/sanPhamAjax.js'/>"></script>
+	<script src="<c:url value='/js/employee/sanPhamEmployeeAjax.js'/>"></script>
 </body>
 </html>

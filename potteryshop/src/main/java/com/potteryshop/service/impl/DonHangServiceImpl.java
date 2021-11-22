@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.potteryshop.entities.QDonHang;
@@ -127,5 +128,12 @@ public class DonHangServiceImpl implements DonHangService {
 	public int countByTrangThaiDonHang(String trangThaiDonHang) {
 		return donHangRepo.countByTrangThaiDonHang(trangThaiDonHang);
 	}
+
+	@Override
+	public List<DonHang> fillAll() {
+		// TODO Auto-generated method stub
+		return donHangRepo.findAll();
+	}
+	
 
 }

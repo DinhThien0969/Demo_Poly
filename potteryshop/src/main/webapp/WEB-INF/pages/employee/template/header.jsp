@@ -20,7 +20,7 @@
 
 <body>
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: 	#25383C;border-color: rgb(0 0 0 / 25%)">
     <div class="container">
       <div class="navbar-header">
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,7 +28,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<c:url value='/employee'/>">Pottery Shop - Trang Employee</a>
+        <a class="navbar-brand" href="<c:url value='/'/>" ><span class="glyphicon glyphicon-home">&nbsp;</span>
+            Trang chủ</a>
+        <a class="navbar-brand" href="<c:url value='/employee'/>"><span class="glyphicon glyphicon-lock">&nbsp;</span>Pottery Shop - Trang Employee</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">

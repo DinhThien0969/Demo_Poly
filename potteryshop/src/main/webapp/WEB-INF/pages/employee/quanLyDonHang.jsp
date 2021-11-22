@@ -22,10 +22,10 @@
 
 	<div class="col-md-9 animated bounce">
 		<h3 class="page-header form-inline">Quản lý Đơn hàng -Employee</h3>
-
 		<form class="form-inline" id="searchForm" name="searchObject">
 			<input id="idEmployee" type="hidden" value="${loggedInUser.id }">
-			<select class="form-control" id="trangThai">
+			<select class="form-control" id="trangThai">		
+			    <option value="Đang chờ xác nhận khách mua">Đang chờ xác nhận khách mua</option>
 				<option value="Đang giao">Được phân công</option>
 				<option value="Chờ duyệt">Chờ duyệt</option>
 				<option value="Hoàn thành">Hoàn thành</option>
@@ -50,6 +50,10 @@
 					style="left: -30px; top: 4px"></span>
 			</div>
 		</form>
+		<hr>
+		<button class="btn btn-primary" type="button" type="submit" onClick="window.location.reload()">Refresh Button</button>
+		
+<h4>Nhấn Refresh Button thường xuyên để cập nhật đơn hàng mới</h1>
 
 		<hr />
 		<table class="table table-hover donHangTable"
@@ -67,7 +71,9 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 			</tbody>
+<p hidden id="intro">${fn:length(employee.listDonHang)}</p>
 
 		</table>
 
@@ -75,6 +81,104 @@
 		</ul>
 	</div>
 	<div class="row col-md-6">
+		<form class="chiTietForm">
+			<div class="modal fade" id="chiTietModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog " role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<p class="h4 modal-title" id="maDonHang"></p>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-12">
+									<div class="card" style="padding: 40px">
+										<div class="row pb-5 p-5">
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mb-4">
+													<strong>Thông tin khách</strong>
+												</h5>
+												<p class="mb-1" id="hoTenNguoiNhan"></p>
+												<p class="mb-1" id="diaChiNhan"></p>
+												<p class="mb-1" id="sdtNhanHang"></p>
+											</div>
+
+											<div class="col-md-6 text-right"
+												style="padding-left: 65px; text-align: left">
+												<h5 class="font-weight-bold mb-4">
+													<strong>Thông tin đơn hàng</strong>
+												</h5>
+												<p class="mb-1" id="trangThaiDonHang"></p>
+												<p class="mb-1" id="ngayDatHang"></p>
+												<p class="mb-1" id="ngayShipHang"></p>
+												<p class="mb-1" id="ngayNhanHang"></p>
+											</div>
+										</div>
+										<hr />
+										<div class="row p-5">
+											<div class="col-md-12">
+												<table class="table chiTietTable"
+													style="text-align: center;">
+													<thead>
+														<tr>
+															<th
+																class="border-0 text-uppercase small font-weight-bold">STT</th>
+															<th
+																class="border-0 text-uppercase small font-weight-bold">Tên
+																sản phẩm</th>
+															<th
+																class="border-0 text-uppercase small font-weight-bold">Đơn
+																giá</th>
+															<th
+																class="border-0 text-uppercase small font-weight-bold">Số
+																lượng đặt</th>
+<!-- 															<th
+																class="border-0 text-uppercase small font-weight-bold">Số
+																lượng nhận</th> -->
+														</tr>
+													</thead>
+													<tbody>
+													</tbody>
+												</table>
+											</div>
+										</div>
+
+										<div class="d-flex flex-row-reverse bg-dark text-white p-4">
+											<div class="py-3 px-5 text-right">
+												<div class="mb-2">
+													<p id="tongTien"></p>
+												</div>
+											</div>
+										</div>
+										<hr />
+
+										<div class="col-md-6">
+											<h5 class="font-weight-bold mb-4">
+												<strong>Thông tin khác</strong>
+											</h5>
+											<p class="mb-1" id="employee"></p>
+											<p class="mb-1" id="nguoiDat"></p>
+											<p class="mb-1" id="ghiChu"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<a href="employee/export/pdf">Export to PDF</a>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Đóng</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+<div class="row col-md-6">
 		<form class="chiTietForm">
 			<div class="modal fade" id="chiTietModal" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -171,7 +275,6 @@
 			</div>
 		</form>
 	</div>
-
 	<div class="row col-md-6">
 		<form class="capNhatTrangThaiForm" id="form">
 			<div>
@@ -181,8 +284,7 @@
 					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Cập nhật
-									trạng thái đơn</h5>
+								<h3 class="modal-title" id="exampleModalLabel">Xác nhận khách nhận hàng</h3>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
@@ -235,6 +337,75 @@
 			</div>
 		</form>
 	</div>
+	
+	
+	
+	
+	
+	
+		<div class="row col-md-6">
+		<form class="xacNhanKhachMuaForm" id="form">
+			<div>
+				<div class="modal fade" id="xacNhanKhachMuaModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true" data-backdrop="static" data-keyboard="false">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title" id="exampleModalLabel">Xác nhận khách mua hàng</h3>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<input type="hidden" id="donHangId" value="">
+								</div>
+								<div class="form-group">
+									<div class="col-md-12">
+										<table class="table chiTietCapNhatTable"
+											style="text-align: center;">
+											<thead>
+												<tr>
+													<th class="border-0 text-uppercase small font-weight-bold">STT</th>
+													<th class="border-0 text-uppercase small font-weight-bold">Tên
+														sản phẩm</th>
+													<th class="border-0 text-uppercase small font-weight-bold">Đơn
+														giá</th>
+													<th class="border-0 text-uppercase small font-weight-bold">Số
+														lượng đặt</th>
+													<th class="border-0 text-uppercase small font-weight-bold">Số
+														lượng nhận</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+										<h4 id="tongTienCapNhat"
+											style="float: right; font-weight: bold;padding-right: 50px"></h4>
+									</div>
+
+									<div>
+										<h5 id="ghiChu" style="font-weight: bold; padding-top: 10px">Ghi
+											chú</h5>
+										<textarea rows="3" cols="117" id="ghiChuEmployee"></textarea>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Hủy</button>
+									<input class="btn btn-primary" id="btnXacNhanKhachMua" type="button"
+										value="Xác nhận" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
 	</div>
 
 	<jsp:include page="template/footer.jsp"></jsp:include>
@@ -272,6 +443,7 @@
 				return date;
 			}
 		});
+		
 	</script>
 
 	<script src="<c:url value='/js/employee/donHangEmployeeAjax.js'/>"></script>

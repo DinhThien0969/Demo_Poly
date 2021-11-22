@@ -28,7 +28,7 @@ import com.potteryshop.entities.ResponseObject;
 import com.potteryshop.service.DanhMucService;
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/employee/danh-muc")
+@RequestMapping("api/employee/danh-muc")
 public class DanhMucEmployeeApi {
 
 	@Autowired

@@ -37,7 +37,7 @@ $(document).ready(function(){
 					                  '<td>' + danhMuc.tenDanhMuc + '</td>' +
 					                  '<td>'+'<input type="hidden" value=' + danhMuc.id + '>'
 					                     + '<button class="btn btn-primary btnCapNhatDanhMuc" >Cập nhật</button>' 
-					                     
+					                    
 				                      '</tr>';
 					$('.danhMucTable tbody').append(danhMucRow);
 				});		

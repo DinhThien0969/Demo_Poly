@@ -84,6 +84,6 @@
 
 
 	<jsp:include page="template/footer.jsp"></jsp:include>
-	<script src="<c:url value='/js/employee/danhMucAjax.js'/>" ></script>
+	<script src="<c:url value='/js/employee/danhMucEmployeeAjax.js'/>"></script>
 </body>
 </html>

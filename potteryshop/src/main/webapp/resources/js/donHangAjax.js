@@ -39,8 +39,10 @@ $(document).ready(function() {
 					    	 donHangRow += ' &nbsp;<button class="btn btn-primary btnPhanCong">Phân công</button>'+
 					    	               ' &nbsp;<button class="btn btn-danger btnHuy">Hủy đơn</button>' ;
 					     } else if (donHang.trangThaiDonHang == "Chờ duyệt"){
-					         donHangRow += ' &nbsp;<button class="btn btn-primary btnCapNhat" >Cập Nhật</button> </td>';
-					     }
+					         donHangRow += ' &nbsp;<button class="btn btn-primary btnCapNhat" >Duyệt hoàn thành </button> </td>';
+					     }else{
+					   /*  donHangRow += ' &nbsp;<label>Đang đợi nhân viên xác nhận khách</label> </td>';*/
+					     } 
 					                  
 					$('.donHangTable tbody').append(donHangRow);
 					
@@ -237,7 +239,7 @@ $("#employee").html("<strong>Employee</strong>: "+ donHang.employee.hoTen);
 			 if(donHang.trangThaiDonHang == "Đang chờ giao" || donHang.trangThaiDonHang == "Đang giao"){
 		    	 donHangRow += ' &nbsp;<button class="btn btn-danger btnPhanCong">Phân công</button>';
 		     } else if (donHang.trangThaiDonHang == "Chờ duyệt"){
-donHangRow += ' &nbsp;<button class="btn btn-warning btnCapNhat" >Cập Nhật</button> </td>';
+donHangRow += ' &nbsp;<button class="btn btn-warning btnCapNhat" >Duyệt hoàn thành</button> </td>';
 		     }
             
              $('.donHangTable tbody').append(donHangRow);

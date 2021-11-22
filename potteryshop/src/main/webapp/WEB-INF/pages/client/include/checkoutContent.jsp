@@ -27,7 +27,8 @@
 	<div class="container">
 		<form method="POST" action="<%=request.getContextPath()%>/thankyou">
 			<div class="row">
-				<br> <br>
+				<br>
+				<br>
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<div class="col-md-3">
 						<br>
@@ -48,7 +49,8 @@
 						</p>
 						<textarea rows="5" cols="29" disabled>${user.diaChi}</textarea>
 
-						<br> <br>
+						<br>
+						<br>
 					</div>
 
 					<div class="col-md-3">
@@ -67,15 +69,9 @@
 						<p style="line-height: 2;">Địa chỉ(số nhà, đường, tỉnh thành)
 							*</p>
 						<textarea rows="5" cols="29" name="diaChiNhan" required></textarea>
-						<div>
-							<select class="group">
-								<option>Thanh Toán Bằng</option>
-								<option>Paypal</option>
-								<option>Thanh toán khi nhận hàng</option>
-							</select> <a href="paypal">button</a>
-						</div>
-						<br> <br> <input type="hidden" id="tongGiaTri"
-							name="tongGiaTri">
+
+						<br>
+						<br> <input type="hidden" id="tongGiaTri" name="tongGiaTri">
 					</div>
 
 					<div class="col-md-6">
@@ -146,35 +142,30 @@
 						<button class="btn btn-danger pull-center" type="submit"
 							id="submit">Gửi đơn hàng</button>
 
-						<br> <br>
+						<br>
+						<br>
 
 					</div>
 				</c:if>
 				<c:if test="${pageContext.request.userPrincipal.name == null}">
-					<h1
-						style="font-size: 45px; color: red; text-align: center; font-family: cursive;">Vui
-						lòng đăng nhập để thanh toán</h1>
-					<img alt=""
-						src="https://battrangfamily.com.vn/wp-content/uploads/2020/09/banner-new-5.jpg">
-					<script type="text/javascript">
-						$(document)
-								.ready(
-										function() {
-											Swal
-													.fire({
-														icon : 'warning',
-														title : 'VUI LÒNG ĐĂNG NHẬP VÀ VÀO LẠI GIỎ HÀNG',
-														text : 'Ấn ok để hủy bỏ ',
-														footer : '<a href="http://localhost:8080/potteryshop/login">Click vào để đăng nhập</a>'
-													})
-										});
-					</script>
-				</c:if>
-			</div>
-		</form>
+	<h1 style="font-size: 45px; color: red; text-align: center;font-family:cursive;">Vui lòng đăng nhập để thanh toán</h1>
+	<img alt="" src="https://battrangfamily.com.vn/wp-content/uploads/2020/09/banner-new-5.jpg">
+	 <script type="text/javascript">	  
+	$(document).ready(function() { 
+		Swal.fire({
+			  icon: 'warning',
+			  title: 'VUI LÒNG ĐĂNG NHẬP VÀ VÀO LẠI GIỎ HÀNG',
+			  text: 'Ấn ok để hủy bỏ ',
+			  footer: '<a href="http://localhost:8080/potteryshop/login">Click vào để đăng nhập</a>'
+			})
+	  });
+	</script> 
+	</c:if>
 	</div>
+	</form>
+</div>
 
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<script src="<c:url value='/js/client/checkoutAjax.js'/>"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="<c:url value='/js/client/checkoutAjax.js'/>" ></script>	
 </body>
 </html>
